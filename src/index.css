@@ -1,0 +1,399 @@
+@import "tailwindcss";
+
+/* Mantel design tokens — 5B "Side veil" (design/design_handoff_mantel_5b).
+   The wall is framed decor at 75", so type is large and calm. Retheming is mostly
+   editing these variables (see MODULES.md).
+
+   Two ink sets, because the wall has two modes:
+     - photo mode  — a family photo fills the screen, a veil carries the column
+     - solid mode  — no photo queued; the veil becomes the whole surface
+   Photo-mode ink is computed against the veiled photo, never the raw one. */
+@theme {
+  /* surfaces */
+  --color-surface: hsl(26 12% 8%); /* solid fallback wall */
+  --color-surface-deep: hsl(26 10% 5%); /* veil/scrim base */
+
+  /* ink — solid mode (no photo) */
+  --color-ink: hsl(36 28% 91%);
+  --color-ink-soft: hsl(36 20% 82%);
+  --color-ink-dim: hsl(32 10% 64%);
+  --color-ink-faint: hsl(30 8% 46%); /* >=26px roles only */
+  --color-line: hsl(30 10% 20%);
+  --color-line-soft: hsl(30 10% 16%);
+  --color-accent: hsl(22 42% 68%); /* clay — greeting only */
+
+  /* ink — photo mode (over the veil) */
+  --color-ink-photo: hsl(36 30% 94%);
+  --color-ink-soft-photo: hsl(36 20% 84%);
+  --color-ink-dim-photo: hsl(32 16% 76%);
+  --color-ink-faint-photo: hsl(30 10% 58%);
+  --color-line-photo: hsl(36 20% 80% / 0.18);
+  --color-accent-photo: hsl(30 48% 74%);
+
+  /* person palette — matched lightness (~65%), low chroma, so no one shouts.
+     Always paired with the person's name; color is never the only signal. */
+  --color-person-clay: hsl(16 45% 68%);
+  --color-person-ochre: hsl(42 48% 62%);
+  --color-person-sage: hsl(115 18% 60%);
+  --color-person-harbor: hsl(210 28% 68%);
+  --color-person-heather: hsl(310 16% 68%);
+
+  /* type */
+  --font-display: "Newsreader", ui-serif, Georgia, serif;
+  --font-text: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --text-time: 120px; /* clock */
+  --text-meridiem: 44px;
+  --text-date: 34px;
+  --text-weather: 30px;
+  --text-row-title: 34px; /* event + task titles */
+  --text-meta: 27px;
+  --text-label: 26px; /* section labels — the legibility floor */
+
+  /* rhythm (logical px at 1920x1080) */
+  --spacing-safe-x: 96px;
+  --spacing-safe-y: 60px;
+  --spacing-column: 560px; /* veil column width */
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The veil. Geometry, not a token — the 100deg angle and the 34%/62% stops are
+   load-bearing: they guarantee >=0.78 alpha behind every glyph in the 560px
+   column while keeping the scrim off the photo's right two-thirds. */
+.mantel-veil {
+  background: linear-gradient(
+    100deg,
+    hsl(26 10% 5% / 0.94) 0%,
+    hsl(26 10% 5% / 0.78) 34%,
+    hsl(26 10% 5% / 0) 62%
+  );
+}
+
+/* Slow drift so a still photo reads as alive on an always-on panel. */
+@keyframes mantel-kenburns {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.08) translate(-14px, 8px);
+  }
+}
+
+.mantel-kenburns {
+  animation: mantel-kenburns 45s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mantel-kenburns {
+    animation: none;
+  }
+}
+
+/* A rotated photo dissolving in over the one it replaces (board mantelpiece).
+   Opacity only — the frame, mat and rotation stay put, per the rotation spec. */
+@keyframes mantel-fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.mantel-fadein {
+  animation: mantel-fadein 1200ms ease both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mantel-fadein {
+    animation: none;
+  }
+}
+
+/* The star that scales in when one lands, on the phone companion. */
+@keyframes mantel-pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.mantel-pop {
+  animation: mantel-pop 320ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mantel-pop {
+    animation: none;
+  }
+}
+
+/* ── The tenth star ────────────────────────────────────────────────────────
+   Two celebrations, deliberately different in kind:
+
+   1. THE BURST — the whole wall, once, the moment the row fills. Loud on
+      purpose; it lasts seconds and then the wall is a wall again.
+   2. THE STANDING GLOW — the reward plate and the earned stars stay alive for
+      the rest of the week, until someone starts a fresh week. This one runs for
+      days on an always-on panel, so it is transform/opacity only (composited,
+      no layout or paint work) and slow enough to read as breathing rather than
+      blinking.
+
+   Per-particle values arrive as custom properties (--dx, --dy, --rot, --s) so
+   one keyframe serves fifty-odd elements. */
+
+/* The burst's container: hold, then dissolve. The React side unmounts it. */
+@keyframes mantel-celebrate-out {
+  0%,
+  86% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.mantel-celebrate {
+  animation: mantel-celebrate-out var(--celebrate-ms, 9000ms) linear both;
+}
+
+/* The starburst fan behind everything — rays scaling out of the centre, then
+   turning slowly for the rest of the burst. */
+@keyframes mantel-rays-in {
+  from {
+    transform: scale(0.15);
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0.62;
+  }
+}
+@keyframes mantel-rays-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+.mantel-rays {
+  animation:
+    mantel-rays-in 1400ms cubic-bezier(0.16, 1, 0.3, 1) both,
+    mantel-rays-spin 80s linear infinite;
+}
+
+/* A shard of the burst: thrown out from the centre, spinning, fading as it goes. */
+@keyframes mantel-shard {
+  0% {
+    transform: translate(0, 0) scale(0.2) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(var(--s)) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+.mantel-shard {
+  animation: mantel-shard var(--dur, 1800ms) cubic-bezier(0.12, 0.72, 0.24, 1) var(--delay, 0ms) both;
+}
+
+/* Secondary starbursts — a ring blown outward, popped at spread points so the
+   celebration keeps going off across the whole panel, not just the middle. */
+@keyframes mantel-ring {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+.mantel-ring {
+  animation: mantel-ring 1100ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0ms) both;
+}
+
+/* Stars raining for the length of the burst. Negative delays start them
+   mid-fall, so the sky is already full on the first frame. */
+@keyframes mantel-starfall {
+  0% {
+    transform: translateY(-140px) rotate(0deg);
+    opacity: 0;
+  }
+  8%,
+  72% {
+    opacity: var(--o, 0.8);
+  }
+  100% {
+    transform: translateY(1240px) rotate(var(--rot, 360deg));
+    opacity: 0;
+  }
+}
+.mantel-starfall {
+  animation: mantel-starfall var(--dur, 7s) linear var(--delay, 0ms) infinite;
+}
+
+/* The prize itself, arriving. */
+@keyframes mantel-bloom {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.mantel-bloom {
+  animation: mantel-bloom 900ms cubic-bezier(0.34, 1.4, 0.5, 1) var(--delay, 0ms) both;
+}
+@keyframes mantel-rise {
+  from {
+    transform: translateY(26px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.mantel-rise {
+  animation: mantel-rise 700ms cubic-bezier(0.16, 1, 0.3, 1) var(--delay, 0ms) both;
+}
+
+/* ── The standing glow (full row → fresh week) ─────────────────────────── */
+
+/* The prize breathing under its halo. */
+@keyframes mantel-breathe {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+.mantel-breathe {
+  animation: mantel-breathe 3.2s ease-in-out infinite alternate;
+}
+
+/* The halo behind it, out of phase with the breath so the two never pulse
+   together into a strobe. */
+@keyframes mantel-aura {
+  from {
+    transform: scale(0.86);
+    opacity: 0.45;
+  }
+  to {
+    transform: scale(1.12);
+    opacity: 0.95;
+  }
+}
+.mantel-aura {
+  animation: mantel-aura 4.6s ease-in-out infinite alternate;
+}
+
+/* A sparkle lifting off the prize, forever. */
+@keyframes mantel-lift {
+  0% {
+    transform: translateY(14px) scale(0.4);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-46px) scale(1);
+    opacity: 0;
+  }
+}
+.mantel-lift {
+  animation: mantel-lift 4s ease-out var(--delay, 0ms) infinite;
+}
+
+/* The gold plate under the prize, with a light travelling across it. */
+.mantel-plate {
+  position: relative;
+  overflow: hidden;
+}
+.mantel-plate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, hsl(48 100% 92% / 0.95), transparent);
+  animation: mantel-sheen 3.4s ease-in-out infinite;
+}
+@keyframes mantel-sheen {
+  0% {
+    transform: translateX(-110%);
+  }
+  55%,
+  100% {
+    transform: translateX(110%);
+  }
+}
+
+/* Earned stars shimmering while the row stands full. Staggered per star, so the
+   field twinkles rather than flashing as one. */
+@keyframes mantel-twinkle {
+  from {
+    transform: scale(0.94);
+    opacity: 0.72;
+  }
+  to {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+.mantel-twinkle {
+  animation: mantel-twinkle 2.4s ease-in-out var(--delay, 0ms) infinite alternate;
+}
+
+/* Motion is the whole point here, so "reduce" doesn't get a lesser animation —
+   it gets none. The burst still appears and still clears itself on its timer;
+   the standing state still reads as won, because gold, glow and scale are all
+   set on the elements themselves rather than being animated in. */
+@media (prefers-reduced-motion: reduce) {
+  .mantel-celebrate,
+  .mantel-rays,
+  .mantel-shard,
+  .mantel-ring,
+  .mantel-starfall,
+  .mantel-bloom,
+  .mantel-rise,
+  .mantel-breathe,
+  .mantel-aura,
+  .mantel-lift,
+  .mantel-plate::after,
+  .mantel-twinkle {
+    animation: none;
+  }
+  /* Without their launch animation the shards and the rain would pile up
+     unmoved at their origin; hide them and let the prize carry it. */
+  .mantel-shard,
+  .mantel-ring,
+  .mantel-starfall,
+  .mantel-lift {
+    display: none;
+  }
+}

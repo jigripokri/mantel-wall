@@ -1,0 +1,52 @@
+/* Mantel — Tailwind v4 design tokens (5B "Side veil") */
+@theme {
+  /* surfaces */
+  --color-surface:      hsl(26 12% 8%);   /* solid fallback wall */
+  --color-surface-deep: hsl(26 10% 5%);   /* veil/scrim base */
+
+  /* ink — solid mode (no photo) */
+  --color-ink:        hsl(36 28% 91%);
+  --color-ink-soft:   hsl(36 20% 82%);
+  --color-ink-dim:    hsl(32 10% 64%);
+  --color-ink-faint:  hsl(30 8% 46%);    /* ≥26px roles only */
+  --color-line:       hsl(30 10% 20%);
+  --color-line-soft:  hsl(30 10% 16%);
+  --color-accent:     hsl(22 42% 68%);   /* clay — greeting only */
+
+  /* ink — photo mode (over the veil) */
+  --color-ink-photo:       hsl(36 30% 94%);
+  --color-ink-soft-photo:  hsl(36 20% 84%);
+  --color-ink-dim-photo:   hsl(32 16% 76%);
+  --color-ink-faint-photo: hsl(30 10% 58%);
+  --color-line-photo:      hsl(36 20% 80% / 0.18);
+  --color-accent-photo:    hsl(30 48% 74%);
+
+  /* person palette */
+  --color-person-clay:    hsl(16 45% 68%);
+  --color-person-ochre:   hsl(42 48% 62%);
+  --color-person-sage:    hsl(115 18% 60%);
+  --color-person-harbor:  hsl(210 28% 68%);
+  --color-person-heather: hsl(310 16% 68%);
+
+  /* type */
+  --font-display: "Newsreader", serif;
+  --font-text:    "Instrument Sans", sans-serif;
+  --text-time: 120px;      /* clock */
+  --text-meridiem: 44px;
+  --text-date: 34px;
+  --text-weather: 30px;
+  --text-row-title: 34px;  /* event + task titles */
+  --text-meta: 27px;
+  --text-label: 26px;      /* section labels — the floor */
+
+  /* rhythm (logical px at 1920×1080) */
+  --spacing-safe-x: 96px;
+  --spacing-safe-y: 60px;
+  --spacing-column: 560px; /* veil column width */
+}
+
+/* veil (not a token — geometry): */
+/* background: linear-gradient(100deg,
+     hsl(26 10% 5% / 0.94) 0%,
+     hsl(26 10% 5% / 0.78) 34%,
+     hsl(26 10% 5% / 0) 62%); */

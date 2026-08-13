@@ -1,0 +1,24 @@
+<!-- Magic Link email (supabase config.toml -> [auth.email.template.magic_link]).
+     Replaces the Supabase default for one reason: the default shows only the
+     link, and a link tapped on an iPhone opens Safari — a different storage
+     container from the installed home-screen app, which therefore stays signed
+     out. The 8-digit code ({{ .Token }}) signs in *inside* whatever surface the
+     form is on, so it leads. Inline styles only: email clients strip the rest. -->
+<div style="font-family: Georgia, 'Times New Roman', serif; max-width: 420px; margin: 0 auto; padding: 32px 24px; color: #2e2318;">
+  <div style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: #b08a4f;">
+    Mantel
+  </div>
+  <h2 style="font-size: 26px; font-weight: normal; margin: 14px 0 6px;">Sign in</h2>
+  <p style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #6b5d4d; margin: 0 0 22px;">
+    Using the Mantel app? Type this code into it:
+  </p>
+  <div style="font-family: 'Courier New', monospace; font-size: 34px; letter-spacing: 0.18em; padding: 18px 0; text-align: center; background: #f5f0e8; border: 1px solid #e2d8c8;">
+    {{ .Token }}
+  </div>
+  <p style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #6b5d4d; margin: 24px 0 0;">
+    In a browser instead? <a href="{{ .ConfirmationURL }}" style="color: #b08a4f;">Tap here to sign in</a>.
+  </p>
+  <p style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #9a8c78; margin: 22px 0 0;">
+    If you didn't ask for this, you can ignore it — nothing happens without the code or the link.
+  </p>
+</div>

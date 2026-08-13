@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:hsl(26,10%,5%);}
+a{color:hsl(22,42%,68%);text-decoration:none} a:hover{color:hsl(36,28%,91%)}
+</style>
+</helmet>
+<div style="font-family:'Instrument Sans',sans-serif;color:hsl(36,28%,91%);padding:80px;display:flex;flex-direction:column;gap:80px;width:3200px">
+
+  <div style="max-width:1080px">
+    <div style="font:600 14px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(22,42%,68%)">Mantel · companion app</div>
+    <div style="font:400 60px/1.1 Newsreader;margin-top:20px">The family wall, from your pocket.</div>
+    <div style="font:400 19px/1.6 'Instrument Sans';color:hsl(32,10%,64%);margin-top:20px;text-wrap:pretty">Three structures for the phone companion, each shown dark and light at 390px. Then the two strongest refined, the full star / reward / layout / sign-in flows, and a portable spec. The star action is the spine of all three — everything else is arranged around how often a thumb reaches for it.</div>
+  </div>
+
+  <!-- ================= ROUND FOUR · 1d TREATMENTS ================= -->
+  <section style="display:flex;flex-direction:column;gap:44px">
+    <div>
+      <div style="font:600 14px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(22,42%,68%)">Round four</div>
+      <div style="font:400 44px/1.15 Newsreader;margin-top:12px">Four treatments of <a href="#1d">1d</a></div>
+      <div style="font:400 17px/1.5 'Instrument Sans';color:hsl(32,10%,64%);margin-top:10px;max-width:1000px">Same skeleton every time — eyebrow, star plate, gold action, wall row, future pair, footer. Only the temperature changes: how loud the star field is, how much chrome the plates carry, and how much the app talks. Each is shown at four earned stars.</div>
+      <div style="height:1px;background:hsl(30,10%,22%);margin-top:22px"></div>
+    </div>
+
+    <div style="display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start">
+
+      <!-- 1f · playful -->
+      <div id="1f" style="display:flex;flex-direction:column;gap:16px;width:422px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="font:600 14px/1 'Instrument Sans';letter-spacing:0.1em;color:hsl(26,12%,8%);background:hsl(22,42%,68%);padding:6px 12px">1f</span>
+          <span style="font:600 18px/1 'Instrument Sans'">Night sky — the fun one</span>
+        </div>
+        <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%)">The plate becomes a small piece of sky: a deep indigo-warm field, stars at three sizes with real glow, and the reward hanging like a moon. Copy is spoken out loud ("Four stars up"). Still no confetti — the delight is in the drawing.</div>
+        <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+          <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(36,28%,91%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,8%,46%)">▮▮▮</span></div>
+            <div style="padding:32px 24px 0;display:flex;justify-content:space-between;align-items:flex-start">
+              <div>
+                <div style="font:600 13px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(22,42%,68%)">Mantel</div>
+                <div style="font:400 36px/1.1 Newsreader;color:hsl(36,28%,91%);margin-top:11px">Four stars up</div>
+              </div>
+              <span style="width:40px;height:40px;border-radius:50%;border:1px solid hsl(30,10%,22%);display:flex;align-items:center;justify-content:center;font:500 15px/1 'Instrument Sans';color:hsl(32,10%,64%)">P</span>
+            </div>
+            <div style="margin:24px 16px 0;background:linear-gradient(168deg,hsl(250,22%,13%) 0%,hsl(26,14%,10%) 100%);padding:0 0 26px">
+              <div style="position:relative;height:180px;overflow:hidden">
+                <sc-for list="{{ sky4 }}" as="n" hint-placeholder-count="10">
+                  <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+                </sc-for>
+                <sc-for list="{{ skyDust }}" as="d" hint-placeholder-count="14">
+                  <span style="position:absolute;left:{{ d.left }}px;top:{{ d.top }}px;width:2px;height:2px;border-radius:50%;background:hsl(40,40%,88%);opacity:{{ d.o }}"></span>
+                </sc-for>
+                <div style="position:absolute;right:22px;top:26px;width:62px;height:62px;border-radius:50%;background:hsl(26,14%,12%);border:1px solid hsl(44,50%,42%);display:flex;align-items:center;justify-content:center;font-size:30px">🎬</div>
+              </div>
+              <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 24px">
+                <div style="font:400 21px/1.3 Newsreader;color:hsl(36,20%,82%)">Six more to<br>movie night</div>
+                <span style="font:400 17px/1 'Instrument Sans';color:hsl(22,42%,68%)">Change ›</span>
+              </div>
+              <div style="margin:22px 24px 0;height:96px;background:hsl(44,74%,56%);display:flex;align-items:center;justify-content:center;gap:14px;box-shadow:0 0 44px hsl(44,74%,56%,0.22)">
+                <span style="font-size:30px;line-height:1">★</span>
+                <span style="font:500 27px/1 Newsreader;color:hsl(26,12%,8%)">Add a star</span>
+              </div>
+            </div>
+            <div style="margin:16px 16px 0;background:hsl(26,10%,13%);padding:20px 22px;display:flex;align-items:center;gap:14px">
+              <span style="width:52px;height:34px;background:linear-gradient(100deg,hsl(26,10%,5%) 0%,hsl(26,10%,5%,0.5) 55%,hsl(28,16%,28%) 100%);flex:none"></span>
+              <span style="flex:1;font:400 19px/1 Newsreader;color:hsl(36,28%,91%)">Side veil</span>
+              <span style="font:400 17px/1 'Instrument Sans';color:hsl(32,10%,64%)">Switch ›</span>
+            </div>
+            <div style="margin:12px 16px 0;display:flex;gap:12px">
+              <div style="flex:1;background:hsl(26,10%,13%);padding:18px 20px;opacity:0.5;font:400 17px/1.2 Newsreader;color:hsl(32,10%,64%)">＋ Photo</div>
+              <div style="flex:1;background:hsl(26,10%,13%);padding:18px 20px;opacity:0.5;font:400 17px/1.2 Newsreader;color:hsl(32,10%,64%)">◇ Chores</div>
+            </div>
+            <div style="margin-top:auto;padding:0 30px 22px;display:flex;justify-content:space-between;align-items:center">
+              <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">Start a new week</span>
+              <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">About</span>
+            </div>
+            <div style="height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px;margin:0 auto 9px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1g · utilitarian -->
+      <div id="1g" style="display:flex;flex-direction:column;gap:16px;width:422px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="font:600 14px/1 'Instrument Sans';letter-spacing:0.1em;color:hsl(26,12%,8%);background:hsl(22,42%,68%);padding:6px 12px">1g</span>
+          <span style="font:600 18px/1 'Instrument Sans'">Ledger — the utilitarian one</span>
+        </div>
+        <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%)">No cards at all: hairline-ruled rows on the bare surface, like the wall's agenda. The star row is a literal tally of ten slots, and every control states exactly what it does. Fastest to scan, least sentimental.</div>
+        <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+          <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(36,28%,91%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,8%,46%)">▮▮▮</span></div>
+            <div style="padding:30px 24px 0;display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font:600 13px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(22,42%,68%)">Mantel</span>
+              <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">Priya</span>
+            </div>
+            <div style="padding:26px 24px 0">
+              <div style="font:600 12px/1 'Instrument Sans';letter-spacing:0.22em;text-transform:uppercase;color:hsl(30,8%,46%)">Alex · week of Jul 20</div>
+              <div style="display:flex;align-items:baseline;gap:12px;margin-top:16px">
+                <span style="font:400 56px/1 Newsreader;color:hsl(36,28%,91%);font-variant-numeric:tabular-nums">4</span>
+                <span style="font:300 24px/1 Newsreader;color:hsl(32,10%,64%)">of 10 stars</span>
+              </div>
+              <div style="display:flex;gap:7px;margin-top:22px">
+                <sc-for list="{{ tally4 }}" as="t" hint-placeholder-count="10">
+                  <span style="flex:1;height:44px;background:{{ t.bg }};border:1px solid {{ t.ring }};display:flex;align-items:center;justify-content:center;font:400 20px/1 Newsreader;color:{{ t.fg }}">{{ t.glyph }}</span>
+                </sc-for>
+              </div>
+            </div>
+            <div style="margin:26px 24px 0;height:88px;background:hsl(44,74%,56%);display:flex;align-items:center;justify-content:center;gap:12px">
+              <span style="font-size:26px;line-height:1">★</span>
+              <span style="font:500 25px/1 Newsreader;color:hsl(26,12%,8%)">Add a star</span>
+            </div>
+            <div style="margin:32px 0 0;border-top:1px solid hsl(30,10%,20%)">
+              <sc-for list="{{ ledgerRows }}" as="r" hint-placeholder-count="6">
+                <div style="display:flex;align-items:center;gap:14px;padding:20px 24px;border-bottom:1px solid hsl(30,10%,20%);opacity:{{ r.op }}">
+                  <span style="font:600 12px/1 'Instrument Sans';letter-spacing:0.2em;text-transform:uppercase;color:hsl(30,8%,46%);width:82px">{{ r.label }}</span>
+                  <span style="font:400 19px/1.2 Newsreader;color:hsl(36,28%,91%);flex:1">{{ r.value }}</span>
+                  <span style="font:400 16px/1 'Instrument Sans';color:hsl(30,8%,46%)">{{ r.action }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:auto;padding:0 24px 24px;font:400 15px/1.5 'Instrument Sans';color:hsl(30,8%,46%)">Changes reach the TV in a few seconds. · About</div>
+            <div style="height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px;margin:0 auto 9px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1h · minimal -->
+      <div id="1h" style="display:flex;flex-direction:column;gap:16px;width:422px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="font:600 14px/1 'Instrument Sans';letter-spacing:0.1em;color:hsl(26,12%,8%);background:hsl(22,42%,68%);padding:6px 12px">1h</span>
+          <span style="font:600 18px/1 'Instrument Sans'">Wall label — the minimal one</span>
+        </div>
+        <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%)">Almost nothing: one sentence set large in Newsreader, the stone drawing at whisper weight, and a gold rule you press. Everything else is a single line of small type at the bottom. Reads like a museum label for your own week.</div>
+        <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+          <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(36,28%,91%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,8%,46%)">▮▮▮</span></div>
+            <div style="padding:40px 30px 0">
+              <div style="font:600 13px/1 'Instrument Sans';letter-spacing:0.34em;text-transform:uppercase;color:hsl(30,8%,46%)">Alex</div>
+              <div style="font:400 40px/1.18 Newsreader;color:hsl(36,28%,91%);margin-top:22px;text-wrap:pretty">Four stars this week. Six more to movie night.</div>
+            </div>
+            <div style="position:relative;height:132px;margin:52px 30px 0">
+              <sc-for list="{{ whisper4 }}" as="n" hint-placeholder-count="10">
+                <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+              </sc-for>
+              <div style="position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:9px">
+                <span style="font-size:28px;line-height:1;opacity:0.6">🎬</span>
+                <div style="width:48px;height:1px;background:hsl(30,10%,26%)"></div>
+              </div>
+            </div>
+            <div style="margin:auto 30px 0;padding-bottom:34px">
+              <div style="height:2px;background:hsl(44,74%,56%)"></div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding-top:22px">
+                <span style="font:400 32px/1 Newsreader;color:hsl(44,74%,56%)">Add a star</span>
+                <span style="font:400 30px/1 Newsreader;color:hsl(44,74%,56%)">★</span>
+              </div>
+            </div>
+            <div style="padding:0 30px 24px;display:flex;justify-content:space-between;font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">
+              <span>Side veil</span><span>Reward</span><span>New week</span><span>You</span>
+            </div>
+            <div style="height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px;margin:0 auto 9px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1i · light minimal -->
+      <div id="1i" style="display:flex;flex-direction:column;gap:16px;width:422px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="font:600 14px/1 'Instrument Sans';letter-spacing:0.1em;color:hsl(26,12%,8%);background:hsl(22,42%,68%);padding:6px 12px">1i</span>
+          <span style="font:600 18px/1 'Instrument Sans'">Oat card — light, warm, in between</span>
+        </div>
+        <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%)">1d's structure in the wall's light skin, with one indulgence: the star plate is printed on cream like a paper chart, so adding a star feels like marking a page. The most "family fridge" of the four without any cartoon.</div>
+        <div style="width:422px;height:876px;background:hsl(34,18%,72%);border-radius:54px;padding:16px;box-sizing:border-box">
+          <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(38,30%,91%);position:relative;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(28,30%,18%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,14%,52%)">▮▮▮</span></div>
+            <div style="padding:32px 24px 0;display:flex;justify-content:space-between;align-items:flex-start">
+              <div>
+                <div style="font:600 13px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(140,32%,30%)">Mantel</div>
+                <div style="font:400 36px/1.1 Newsreader;color:hsl(28,30%,18%);margin-top:11px">Alex's week</div>
+              </div>
+              <span style="width:40px;height:40px;border-radius:50%;border:1px solid hsl(34,24%,80%);display:flex;align-items:center;justify-content:center;font:500 15px/1 'Instrument Sans';color:hsl(30,14%,38%)">P</span>
+            </div>
+            <div style="margin:26px 16px 0;background:hsl(42,46%,96%);padding:26px 24px 28px;box-shadow:0 1px 0 hsl(34,24%,84%)">
+              <div style="position:relative;height:104px">
+                <sc-for list="{{ plate4Light }}" as="n" hint-placeholder-count="10">
+                  <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+                </sc-for>
+                <div style="position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:10px">
+                  <span style="font-size:34px;line-height:1;opacity:0.75">🎬</span>
+                  <div style="width:60px;height:1px;background:hsl(34,24%,78%)"></div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:22px">
+                <div style="display:flex;align-items:baseline;gap:10px">
+                  <span style="font:400 38px/1 Newsreader;color:hsl(28,30%,18%);font-variant-numeric:tabular-nums">4</span>
+                  <span style="font:300 21px/1 Newsreader;color:hsl(30,14%,38%)">of 10 stars</span>
+                </div>
+                <span style="font:400 17px/1 'Instrument Sans';color:hsl(140,32%,30%)">Movie night ›</span>
+              </div>
+              <div style="height:92px;background:hsl(38,68%,46%);margin-top:24px;display:flex;align-items:center;justify-content:center;gap:14px">
+                <span style="font-size:28px;line-height:1;color:hsl(42,50%,97%)">★</span>
+                <span style="font:500 26px/1 Newsreader;color:hsl(42,50%,97%)">Add a star</span>
+              </div>
+            </div>
+            <div style="margin:18px 16px 0;background:hsl(42,46%,96%);padding:22px 24px;display:flex;align-items:center;gap:14px">
+              <span style="width:52px;height:34px;background:linear-gradient(158deg,hsl(30,32%,89%) 0%,hsl(100,20%,82%) 100%);border:1px solid hsl(34,24%,84%);flex:none"></span>
+              <span style="flex:1"><span style="display:block;font:600 11px/1 'Instrument Sans';letter-spacing:0.2em;text-transform:uppercase;color:hsl(30,14%,52%)">The wall</span><span style="display:block;font:400 19px/1 Newsreader;color:hsl(28,30%,18%);margin-top:7px">Oat &amp; moss</span></span>
+              <span style="font:400 17px/1 'Instrument Sans';color:hsl(30,14%,38%)">Switch ›</span>
+            </div>
+            <div style="margin:12px 16px 0;display:flex;gap:12px">
+              <div style="flex:1;background:hsl(42,46%,96%);padding:20px 22px;opacity:0.6"><span style="display:block;font-size:16px;color:hsl(30,14%,38%)">＋</span><span style="display:block;font:400 17px/1.2 Newsreader;color:hsl(30,14%,38%);margin-top:9px">Add a photo</span></div>
+              <div style="flex:1;background:hsl(42,46%,96%);padding:20px 22px;opacity:0.6"><span style="display:block;font-size:16px;color:hsl(30,14%,38%)">◇</span><span style="display:block;font:400 17px/1.2 Newsreader;color:hsl(30,14%,38%);margin-top:9px">Chores</span></div>
+            </div>
+            <div style="margin-top:auto;padding:0 30px 22px;display:flex;justify-content:space-between;align-items:center">
+              <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,14%,52%)">Start a new week</span>
+              <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,14%,52%)">About</span>
+            </div>
+            <div style="height:5px;width:134px;background:hsl(28,30%,18%,0.28);border-radius:3px;margin:0 auto 9px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TURN 1 · THREE DIRECTIONS ================= -->
+  <section style="display:flex;flex-direction:column;gap:56px">
+    <div>
+      <div style="font:600 14px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(22,42%,68%)">Round one</div>
+      <div style="font:400 44px/1.15 Newsreader;margin-top:12px">Three structures</div>
+      <div style="height:1px;background:hsl(30,10%,22%);margin-top:22px"></div>
+    </div>
+
+    <div style="display:flex;gap:64px;flex-wrap:wrap;align-items:flex-start">
+
+      <!-- ---------- 1a ---------- -->
+      <div id="1a" style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="font:600 14px/1 'Instrument Sans';letter-spacing:0.1em;color:hsl(26,12%,8%);background:hsl(22,42%,68%);padding:6px 12px">1a</span>
+          <span style="font:600 18px/1 'Instrument Sans'">Mantel card — one calm scroll</span>
+        </div>
+        <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);max-width:820px">The wall's own vocabulary, sized for a hand: a stack of quiet cards in the order you touch them. The star plate is the first thing under your thumb and is the only gold on the screen; the rest recedes. Photos and to-dos slot in as two more cards when they ship.</div>
+        <div style="display:flex;gap:36px">
+
+          <!-- 1a dark -->
+          <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+            <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(36,28%,91%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,8%,46%)">▮▮▮</span></div>
+              <div style="padding:30px 24px 0">
+                <div style="font:600 13px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(22,42%,68%)">Mantel</div>
+                <div style="font:400 34px/1.15 Newsreader;color:hsl(36,28%,91%);margin-top:10px">Saturday evening</div>
+              </div>
+              <div style="margin:26px 16px 0;background:hsl(26,10%,13%);padding:24px 22px 26px">
+                <div style="display:flex;justify-content:space-between;align-items:baseline">
+                  <span style="font:600 13px/1 'Instrument Sans';letter-spacing:0.22em;text-transform:uppercase;color:hsl(32,10%,64%)">Alex's stars</span>
+                  <span style="font:400 20px/1 Newsreader;color:hsl(32,10%,64%);font-variant-numeric:tabular-nums">4 of 10</span>
+                </div>
+                <div style="position:relative;height:76px;margin-top:18px">
+                  <sc-for list="{{ stones4 }}" as="n" hint-placeholder-count="10">
+                    <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+                  </sc-for>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;margin-top:14px">
+                  <span style="width:38px;height:38px;border-radius:50%;border:1px solid hsl(30,10%,26%);display:flex;align-items:center;justify-content:center;font-size:19px">🎬</span>
+                  <span style="font:400 19px/1.3 Newsreader;color:hsl(36,20%,82%);flex:1">Movie night</span>
+                  <span style="font:500 15px/1 'Instrument Sans';color:hsl(22,42%,68%)">Change</span>
+                </div>
+                <div style="height:88px;background:hsl(44,74%,56%);margin-top:22px;display:flex;align-items:center;justify-content:center;gap:14px">
+                  <span style="font-size:26px;line-height:1">★</span>
+                  <span style="font:500 25px/1 Newsreader;color:hsl(26,12%,8%)">Add a star</span>
+                </div>
+                <div style="text-align:center;font:400 14px/1 'Instrument Sans';color:hsl(30,8%,46%);margin-top:16px">Start a new week</div>
+              </div>
+              <div style="margin:16px 16px 0;background:hsl(26,10%,13%);padding:22px">
+                <div style="font:600 13px/1 'Instrument Sans';letter-spacing:0.22em;text-transform:uppercase;color:hsl(32,10%,64%)">The wall</div>
+                <div style="display:flex;gap:12px;margin-top:16px">
+                  <div style="flex:1">
+                    <div style="height:64px;background:linear-gradient(100deg,hsl(26,10%,5%) 0%,hsl(26,10%,5%,0.5) 55%,hsl(28,16%,26%) 100%);border:1px solid hsl(44,74%,56%)"></div>
+                    <div style="font:500 15px/1 'Instrument Sans';color:hsl(36,28%,91%);margin-top:9px">Side veil</div>
+                  </div>
+                  <div style="flex:1">
+                    <div style="height:64px;background:linear-gradient(158deg,hsl(30,32%,89%) 0%,hsl(100,20%,86%) 100%);border:1px solid hsl(30,10%,20%)"></div>
+                    <div style="font:500 15px/1 'Instrument Sans';color:hsl(32,10%,64%);margin-top:9px">Oat &amp; moss</div>
+                  </div>
+                </div>
+              </div>
+              <div style="margin:16px 16px 0;background:hsl(26,10%,13%);padding:20px 22px;display:flex;align-items:center;gap:12px;opacity:0.5">
+                <span style="font-size:17px">＋</span>
+                <span style="font:400 18px/1 Newsreader;color:hsl(32,10%,64%);flex:1">Add a photo</span>
+                <span style="font:500 12px/1 'Instrument Sans';letter-spacing:0.14em;text-transform:uppercase;color:hsl(30,8%,46%)">Soon</span>
+              </div>
+              <div style="margin-top:auto;padding:0 30px 22px;display:flex;justify-content:space-between;align-items:center">
+                <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">Priya · sign out</span>
+                <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">About</span>
+              </div>
+              <div style="height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px;margin:0 auto 9px"></div>
+            </div>
+          </div>
+
+          <!-- 1a light -->
+          <div style="width:422px;height:876px;background:hsl(34,18%,72%);border-radius:54px;padding:16px;box-sizing:border-box">
+            <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(38,30%,91%);position:relative;display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(28,30%,18%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,14%,52%)">▮▮▮</span></div>
+              <div style="padding:30px 24px 0">
+                <div style="font:600 13px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(140,32%,30%)">Mantel</div>
+                <div style="font:400 34px/1.15 Newsreader;color:hsl(28,30%,18%);margin-top:10px">Saturday evening</div>
+              </div>
+              <div style="margin:26px 16px 0;background:hsl(42,46%,96%);padding:24px 22px 26px">
+                <div style="display:flex;justify-content:space-between;align-items:baseline">
+                  <span style="font:600 13px/1 'Instrument Sans';letter-spacing:0.22em;text-transform:uppercase;color:hsl(30,14%,38%)">Alex's stars</span>
+                  <span style="font:400 20px/1 Newsreader;color:hsl(30,14%,38%);font-variant-numeric:tabular-nums">4 of 10</span>
+                </div>
+                <div style="position:relative;height:76px;margin-top:18px">
+                  <sc-for list="{{ stones4Light }}" as="n" hint-placeholder-count="10">
+                    <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+                  </sc-for>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;margin-top:14px">
+                  <span style="width:38px;height:38px;border-radius:50%;border:1px solid hsl(34,24%,80%);display:flex;align-items:center;justify-content:center;font-size:19px">🎬</span>
+                  <span style="font:400 19px/1.3 Newsreader;color:hsl(28,26%,26%);flex:1">Movie night</span>
+                  <span style="font:500 15px/1 'Instrument Sans';color:hsl(140,32%,30%)">Change</span>
+                </div>
+                <div style="height:88px;background:hsl(38,68%,46%);margin-top:22px;display:flex;align-items:center;justify-content:center;gap:14px">
+                  <span style="font-size:26px;line-height:1;color:hsl(42,46%,96%)">★</span>
+                  <span style="font:500 25px/1 Newsreader;color:hsl(42,50%,97%)">Add a star</span>
+                </div>
+                <div style="text-align:center;font:400 14px/1 'Instrument Sans';color:hsl(30,14%,52%);margin-top:16px">Start a new week</div>
+              </div>
+              <div style="margin:16px 16px 0;background:hsl(42,46%,96%);padding:22px">
+                <div style="font:600 13px/1 'Instrument Sans';letter-spacing:0.22em;text-transform:uppercase;color:hsl(30,14%,38%)">The wall</div>
+                <div style="display:flex;gap:12px;margin-top:16px">
+                  <div style="flex:1">
+                    <div style="height:64px;background:linear-gradient(100deg,hsl(26,10%,5%) 0%,hsl(26,10%,5%,0.5) 55%,hsl(28,16%,26%) 100%);border:1px solid hsl(34,24%,84%)"></div>
+                    <div style="font:500 15px/1 'Instrument Sans';color:hsl(30,14%,38%);margin-top:9px">Side veil</div>
+                  </div>
+                  <div style="flex:1">
+                    <div style="height:64px;background:linear-gradient(158deg,hsl(30,32%,89%) 0%,hsl(100,20%,86%) 100%);border:1px solid hsl(140,32%,30%)"></div>
+                    <div style="font:500 15px/1 'Instrument Sans';color:hsl(28,30%,18%);margin-top:9px">Oat &amp; moss</div>
+                  </div>
+                </div>
+              </div>
+              <div style="margin:16px 16px 0;background:hsl(42,46%,96%);padding:20px 22px;display:flex;align-items:center;gap:12px;opacity:0.55">
+                <span style="font-size:17px;color:hsl(30,14%,38%)">＋</span>
+                <span style="font:400 18px/1 Newsreader;color:hsl(30,14%,38%);flex:1">Add a photo</span>
+                <span style="font:500 12px/1 'Instrument Sans';letter-spacing:0.14em;text-transform:uppercase;color:hsl(30,14%,52%)">Soon</span>
+              </div>
+              <div style="margin-top:auto;padding:0 30px 22px;display:flex;justify-content:space-between;align-items:center">
+                <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,14%,52%)">Priya · sign out</span>
+                <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,14%,52%)">About</span>
+              </div>
+              <div style="height:5px;width:134px;background:hsl(28,30%,18%,0.28);border-radius:3px;margin:0 auto 9px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---------- 1b ---------- -->
+      <div id="1b" style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="font:600 14px/1 'Instrument Sans';letter-spacing:0.1em;color:hsl(26,12%,8%);background:hsl(22,42%,68%);padding:6px 12px">1b</span>
+          <span style="font:600 18px/1 'Instrument Sans'">The remote — one big key</span>
+        </div>
+        <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);max-width:820px">Almost nothing on screen: the week arcs around a single gold key in the thumb zone. Reward and wall live behind two quiet plates at the top that open as sheets. It genuinely feels like a remote for a beautiful object.</div>
+        <div style="display:flex;gap:36px">
+
+          <!-- 1b dark -->
+          <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+            <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(36,28%,91%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,8%,46%)">▮▮▮</span></div>
+              <div style="display:flex;gap:10px;padding:26px 20px 0">
+                <div style="flex:1;border:1px solid hsl(30,10%,20%);padding:14px 16px;display:flex;align-items:center;gap:11px">
+                  <span style="font-size:20px">🎬</span>
+                  <span><span style="display:block;font:600 11px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,46%)">Reward</span><span style="display:block;font:400 17px/1.2 Newsreader;color:hsl(36,28%,91%);margin-top:5px">Movie night</span></span>
+                </div>
+                <div style="flex:1;border:1px solid hsl(30,10%,20%);padding:14px 16px;display:flex;align-items:center;gap:11px">
+                  <span style="width:22px;height:22px;background:linear-gradient(100deg,hsl(26,10%,5%) 0%,hsl(28,16%,30%) 100%);border:1px solid hsl(30,10%,26%)"></span>
+                  <span><span style="display:block;font:600 11px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,46%)">Wall</span><span style="display:block;font:400 17px/1.2 Newsreader;color:hsl(36,28%,91%);margin-top:5px">Side veil</span></span>
+                </div>
+              </div>
+              <div style="text-align:center;margin-top:52px">
+                <div style="font:600 13px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(22,42%,68%)">Alex's week</div>
+                <div style="font:400 26px/1.3 Newsreader;color:hsl(32,10%,64%);margin-top:14px">Six more to<br>movie night</div>
+              </div>
+              <div style="position:relative;width:300px;height:300px;margin:44px auto 0">
+                <sc-for list="{{ ring4 }}" as="n" hint-placeholder-count="10">
+                  <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+                </sc-for>
+                <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:212px;height:212px;border-radius:50%;background:hsl(44,74%,56%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:0 0 60px hsl(44,74%,56%,0.22)">
+                  <span style="font-size:44px;line-height:1;color:hsl(26,12%,8%)">★</span>
+                  <span style="font:500 24px/1 Newsreader;color:hsl(26,12%,8%)">Add a star</span>
+                  <span style="font:400 15px/1 'Instrument Sans';color:hsl(26,12%,8%,0.6);margin-top:2px">4 of 10</span>
+                </div>
+              </div>
+              <div style="margin-top:auto;padding:0 30px 22px;display:flex;justify-content:space-between;align-items:center">
+                <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">New week</span>
+                <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">Priya</span>
+              </div>
+              <div style="height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px;margin:0 auto 9px"></div>
+            </div>
+          </div>
+
+          <!-- 1b light -->
+          <div style="width:422px;height:876px;background:hsl(34,18%,72%);border-radius:54px;padding:16px;box-sizing:border-box">
+            <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(38,30%,91%);position:relative;display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(28,30%,18%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,14%,52%)">▮▮▮</span></div>
+              <div style="display:flex;gap:10px;padding:26px 20px 0">
+                <div style="flex:1;border:1px solid hsl(34,24%,82%);padding:14px 16px;display:flex;align-items:center;gap:11px">
+                  <span style="font-size:20px">🎬</span>
+                  <span><span style="display:block;font:600 11px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,14%,52%)">Reward</span><span style="display:block;font:400 17px/1.2 Newsreader;color:hsl(28,30%,18%);margin-top:5px">Movie night</span></span>
+                </div>
+                <div style="flex:1;border:1px solid hsl(34,24%,82%);padding:14px 16px;display:flex;align-items:center;gap:11px">
+                  <span style="width:22px;height:22px;background:linear-gradient(158deg,hsl(30,32%,89%) 0%,hsl(100,20%,80%) 100%);border:1px solid hsl(34,24%,78%)"></span>
+                  <span><span style="display:block;font:600 11px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,14%,52%)">Wall</span><span style="display:block;font:400 17px/1.2 Newsreader;color:hsl(28,30%,18%);margin-top:5px">Oat &amp; moss</span></span>
+                </div>
+              </div>
+              <div style="text-align:center;margin-top:52px">
+                <div style="font:600 13px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(140,32%,30%)">Alex's week</div>
+                <div style="font:400 26px/1.3 Newsreader;color:hsl(30,14%,38%);margin-top:14px">Six more to<br>movie night</div>
+              </div>
+              <div style="position:relative;width:300px;height:300px;margin:44px auto 0">
+                <sc-for list="{{ ring4Light }}" as="n" hint-placeholder-count="10">
+                  <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+                </sc-for>
+                <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:212px;height:212px;border-radius:50%;background:hsl(38,68%,46%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+                  <span style="font-size:44px;line-height:1;color:hsl(42,50%,97%)">★</span>
+                  <span style="font:500 24px/1 Newsreader;color:hsl(42,50%,97%)">Add a star</span>
+                  <span style="font:400 15px/1 'Instrument Sans';color:hsl(42,50%,97%,0.72);margin-top:2px">4 of 10</span>
+                </div>
+              </div>
+              <div style="margin-top:auto;padding:0 30px 22px;display:flex;justify-content:space-between;align-items:center">
+                <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,14%,52%)">New week</span>
+                <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,14%,52%)">Priya</span>
+              </div>
+              <div style="height:5px;width:134px;background:hsl(28,30%,18%,0.28);border-radius:3px;margin:0 auto 9px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---------- 1c ---------- -->
+      <div id="1c" style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="font:600 14px/1 'Instrument Sans';letter-spacing:0.1em;color:hsl(26,12%,8%);background:hsl(22,42%,68%);padding:6px 12px">1c</span>
+          <span style="font:600 18px/1 'Instrument Sans'">Two rooms — a tabbed companion</span>
+        </div>
+        <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);max-width:820px">A "Alex" room and a "Wall" room, with a persistent star plate docked above the tabs. The most obviously extensible — photos and chores become a third room — but the tab bar is app furniture the other two avoid.</div>
+        <div style="display:flex;gap:36px">
+
+          <!-- 1c dark -->
+          <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+            <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(36,28%,91%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,8%,46%)">▮▮▮</span></div>
+              <div style="padding:28px 24px 0">
+                <div style="font:400 32px/1.15 Newsreader;color:hsl(36,28%,91%)">Alex</div>
+                <div style="font:400 17px/1.4 'Instrument Sans';color:hsl(32,10%,64%);margin-top:8px">Week of July 20</div>
+              </div>
+              <div style="padding:26px 24px 0">
+                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px 10px">
+                  <sc-for list="{{ grid4 }}" as="g" hint-placeholder-count="10">
+                    <div style="aspect-ratio:1;border-radius:50%;border:1px solid {{ g.ring }};background:{{ g.bg }};display:flex;align-items:center;justify-content:center;font:400 24px/1 Newsreader;color:{{ g.fg }};text-shadow:{{ g.glow }}">{{ g.glyph }}</div>
+                  </sc-for>
+                </div>
+                <div style="display:flex;align-items:baseline;gap:10px;margin-top:24px">
+                  <span style="font:400 40px/1 Newsreader;color:hsl(36,28%,91%);font-variant-numeric:tabular-nums">4</span>
+                  <span style="font:300 20px/1 Newsreader;color:hsl(32,10%,64%)">of 10 · movie night 🎬</span>
+                </div>
+              </div>
+              <div style="margin:30px 24px 0;height:1px;background:hsl(30,10%,20%)"></div>
+              <div style="padding:22px 24px 0;display:flex;flex-direction:column;gap:18px">
+                <div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 19px/1 Newsreader;color:hsl(36,20%,82%)">This week's reward</span><span style="font:400 17px/1 'Instrument Sans';color:hsl(32,10%,64%)">🎬 Movie night ›</span></div>
+                <div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 19px/1 Newsreader;color:hsl(36,20%,82%)">Start a new week</span><span style="font:400 17px/1 'Instrument Sans';color:hsl(30,8%,46%)">›</span></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;opacity:0.5"><span style="font:400 19px/1 Newsreader;color:hsl(36,20%,82%)">Chores</span><span style="font:500 12px/1 'Instrument Sans';letter-spacing:0.14em;text-transform:uppercase;color:hsl(30,8%,46%)">Soon</span></div>
+              </div>
+              <div style="margin-top:auto">
+                <div style="margin:0 16px 12px;height:76px;background:hsl(44,74%,56%);display:flex;align-items:center;justify-content:center;gap:12px">
+                  <span style="font-size:23px;line-height:1">★</span>
+                  <span style="font:500 23px/1 Newsreader;color:hsl(26,12%,8%)">Add a star</span>
+                </div>
+                <div style="border-top:1px solid hsl(30,10%,20%);display:flex;padding:14px 0 4px">
+                  <div style="flex:1;text-align:center"><div style="font-size:19px">☆</div><div style="font:500 12px/1 'Instrument Sans';letter-spacing:0.1em;text-transform:uppercase;color:hsl(22,42%,68%);margin-top:7px">Alex</div></div>
+                  <div style="flex:1;text-align:center"><div style="font-size:19px;opacity:0.5">▣</div><div style="font:500 12px/1 'Instrument Sans';letter-spacing:0.1em;text-transform:uppercase;color:hsl(30,8%,46%);margin-top:7px">Wall</div></div>
+                  <div style="flex:1;text-align:center"><div style="font-size:19px;opacity:0.5">◔</div><div style="font:500 12px/1 'Instrument Sans';letter-spacing:0.1em;text-transform:uppercase;color:hsl(30,8%,46%);margin-top:7px">You</div></div>
+                </div>
+                <div style="height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px;margin:6px auto 9px"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1c light -->
+          <div style="width:422px;height:876px;background:hsl(34,18%,72%);border-radius:54px;padding:16px;box-sizing:border-box">
+            <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(38,30%,91%);position:relative;display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(28,30%,18%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,14%,52%)">▮▮▮</span></div>
+              <div style="padding:28px 24px 0">
+                <div style="font:400 32px/1.15 Newsreader;color:hsl(28,30%,18%)">Alex</div>
+                <div style="font:400 17px/1.4 'Instrument Sans';color:hsl(30,14%,38%);margin-top:8px">Week of July 20</div>
+              </div>
+              <div style="padding:26px 24px 0">
+                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px 10px">
+                  <sc-for list="{{ grid4Light }}" as="g" hint-placeholder-count="10">
+                    <div style="aspect-ratio:1;border-radius:50%;border:1px solid {{ g.ring }};background:{{ g.bg }};display:flex;align-items:center;justify-content:center;font:400 24px/1 Newsreader;color:{{ g.fg }};text-shadow:{{ g.glow }}">{{ g.glyph }}</div>
+                  </sc-for>
+                </div>
+                <div style="display:flex;align-items:baseline;gap:10px;margin-top:24px">
+                  <span style="font:400 40px/1 Newsreader;color:hsl(28,30%,18%);font-variant-numeric:tabular-nums">4</span>
+                  <span style="font:300 20px/1 Newsreader;color:hsl(30,14%,38%)">of 10 · movie night 🎬</span>
+                </div>
+              </div>
+              <div style="margin:30px 24px 0;height:1px;background:hsl(34,24%,84%)"></div>
+              <div style="padding:22px 24px 0;display:flex;flex-direction:column;gap:18px">
+                <div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 19px/1 Newsreader;color:hsl(28,26%,26%)">This week's reward</span><span style="font:400 17px/1 'Instrument Sans';color:hsl(30,14%,38%)">🎬 Movie night ›</span></div>
+                <div style="display:flex;align-items:center;justify-content:space-between"><span style="font:400 19px/1 Newsreader;color:hsl(28,26%,26%)">Start a new week</span><span style="font:400 17px/1 'Instrument Sans';color:hsl(30,14%,52%)">›</span></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;opacity:0.55"><span style="font:400 19px/1 Newsreader;color:hsl(28,26%,26%)">Chores</span><span style="font:500 12px/1 'Instrument Sans';letter-spacing:0.14em;text-transform:uppercase;color:hsl(30,14%,52%)">Soon</span></div>
+              </div>
+              <div style="margin-top:auto">
+                <div style="margin:0 16px 12px;height:76px;background:hsl(38,68%,46%);display:flex;align-items:center;justify-content:center;gap:12px">
+                  <span style="font-size:23px;line-height:1;color:hsl(42,50%,97%)">★</span>
+                  <span style="font:500 23px/1 Newsreader;color:hsl(42,50%,97%)">Add a star</span>
+                </div>
+                <div style="border-top:1px solid hsl(34,24%,84%);display:flex;padding:14px 0 4px">
+                  <div style="flex:1;text-align:center"><div style="font-size:19px;color:hsl(140,32%,30%)">☆</div><div style="font:500 12px/1 'Instrument Sans';letter-spacing:0.1em;text-transform:uppercase;color:hsl(140,32%,30%);margin-top:7px">Alex</div></div>
+                  <div style="flex:1;text-align:center"><div style="font-size:19px;color:hsl(30,14%,52%)">▣</div><div style="font:500 12px/1 'Instrument Sans';letter-spacing:0.1em;text-transform:uppercase;color:hsl(30,14%,52%);margin-top:7px">Wall</div></div>
+                  <div style="flex:1;text-align:center"><div style="font-size:19px;color:hsl(30,14%,52%)">◔</div><div style="font:500 12px/1 'Instrument Sans';letter-spacing:0.1em;text-transform:uppercase;color:hsl(30,14%,52%);margin-top:7px">You</div></div>
+                </div>
+                <div style="height:5px;width:134px;background:hsl(28,30%,18%,0.28);border-radius:3px;margin:6px auto 9px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ROUND TWO ================= -->
+  <section style="display:flex;flex-direction:column;gap:44px">
+    <div>
+      <div style="font:600 14px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(22,42%,68%)">Round two</div>
+      <div style="font:400 44px/1.15 Newsreader;margin-top:12px">Refining <a href="#1a">1a</a> and <a href="#1b">1b</a></div>
+      <div style="font:400 17px/1.5 'Instrument Sans';color:hsl(32,10%,64%);margin-top:10px;max-width:1000px">1c's tab bar reads as app furniture, so it drops out. The two survivors converge on one idea: <span style="color:hsl(36,28%,91%)">the star plate is the app</span>, and everything else is a plate you can ignore. 1d keeps the scroll and gives the plate the wall's stepping-stone drawing; 1e keeps the single key and adds the reward at the end of the arc.</div>
+      <div style="height:1px;background:hsl(30,10%,22%);margin-top:22px"></div>
+    </div>
+
+    <div style="display:flex;gap:56px;flex-wrap:wrap;align-items:flex-start">
+
+      <!-- 1d -->
+      <div id="1d" style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="font:600 14px/1 'Instrument Sans';letter-spacing:0.1em;color:hsl(26,12%,8%);background:hsl(44,74%,56%);padding:6px 12px">1d</span>
+          <span style="font:600 18px/1 'Instrument Sans'">1a refined — the wall's drawing, in your hand</span>
+        </div>
+        <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);max-width:390px">The card now shows the exact stepping-stone graphic the TV shows, so the phone and the wall are the same object. Reward moved onto the plate's end; the count is set in Newsreader for the adult.</div>
+        <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+          <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(36,28%,91%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,8%,46%)">▮▮▮</span></div>
+            <div style="padding:32px 24px 0;display:flex;justify-content:space-between;align-items:flex-start">
+              <div>
+                <div style="font:600 13px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(22,42%,68%)">Mantel</div>
+                <div style="font:400 36px/1.1 Newsreader;color:hsl(36,28%,91%);margin-top:11px">Alex's week</div>
+              </div>
+              <span style="width:40px;height:40px;border-radius:50%;border:1px solid hsl(30,10%,22%);display:flex;align-items:center;justify-content:center;font:500 15px/1 'Instrument Sans';color:hsl(32,10%,64%)">P</span>
+            </div>
+            <div style="margin:26px 16px 0;background:hsl(26,10%,13%);padding:26px 24px 28px">
+              <div style="position:relative;height:104px">
+                <sc-for list="{{ plate4 }}" as="n" hint-placeholder-count="10">
+                  <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+                </sc-for>
+                <div style="position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:10px">
+                  <span style="font-size:34px;line-height:1;opacity:0.7">🎬</span>
+                  <div style="width:60px;height:1px;background:hsl(30,10%,26%)"></div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:22px">
+                <div style="display:flex;align-items:baseline;gap:10px">
+                  <span style="font:400 38px/1 Newsreader;color:hsl(36,28%,91%);font-variant-numeric:tabular-nums">4</span>
+                  <span style="font:300 21px/1 Newsreader;color:hsl(32,10%,64%)">of 10 stars</span>
+                </div>
+                <span style="font:400 17px/1 'Instrument Sans';color:hsl(22,42%,68%)">Movie night ›</span>
+              </div>
+              <div style="height:92px;background:hsl(44,74%,56%);margin-top:24px;display:flex;align-items:center;justify-content:center;gap:14px">
+                <span style="font-size:28px;line-height:1">★</span>
+                <span style="font:500 26px/1 Newsreader;color:hsl(26,12%,8%)">Add a star</span>
+              </div>
+            </div>
+            <div style="margin:18px 16px 0;background:hsl(26,10%,13%);padding:22px 24px;display:flex;align-items:center;gap:14px">
+              <span style="width:52px;height:34px;background:linear-gradient(100deg,hsl(26,10%,5%) 0%,hsl(26,10%,5%,0.5) 55%,hsl(28,16%,28%) 100%);flex:none"></span>
+              <span style="flex:1"><span style="display:block;font:600 11px/1 'Instrument Sans';letter-spacing:0.2em;text-transform:uppercase;color:hsl(30,8%,46%)">The wall</span><span style="display:block;font:400 19px/1 Newsreader;color:hsl(36,28%,91%);margin-top:7px">Side veil</span></span>
+              <span style="font:400 17px/1 'Instrument Sans';color:hsl(32,10%,64%)">Switch ›</span>
+            </div>
+            <div style="margin:12px 16px 0;display:flex;gap:12px">
+              <div style="flex:1;background:hsl(26,10%,13%);padding:20px 22px;opacity:0.5"><span style="display:block;font-size:16px">＋</span><span style="display:block;font:400 17px/1.2 Newsreader;color:hsl(32,10%,64%);margin-top:9px">Add a photo</span></div>
+              <div style="flex:1;background:hsl(26,10%,13%);padding:20px 22px;opacity:0.5"><span style="display:block;font-size:16px">◇</span><span style="display:block;font:400 17px/1.2 Newsreader;color:hsl(32,10%,64%);margin-top:9px">Chores</span></div>
+            </div>
+            <div style="margin-top:auto;padding:0 30px 22px;display:flex;justify-content:space-between;align-items:center">
+              <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">Start a new week</span>
+              <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">About</span>
+            </div>
+            <div style="height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px;margin:0 auto 9px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1e -->
+      <div id="1e" style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="font:600 14px/1 'Instrument Sans';letter-spacing:0.1em;color:hsl(26,12%,8%);background:hsl(22,42%,68%);padding:6px 12px">1e</span>
+          <span style="font:600 18px/1 'Instrument Sans'">1b refined — the arc ends at the treat</span>
+        </div>
+        <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);max-width:390px">The ring becomes an open arc that starts at the bottom-left and finishes at the reward, so the shape says "how far to the treat" without a number. Key is 216px and sits in the natural thumb sweep.</div>
+        <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+          <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(36,28%,91%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,8%,46%)">▮▮▮</span></div>
+            <div style="padding:30px 24px 0;display:flex;justify-content:space-between;align-items:center">
+              <span style="font:600 13px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(22,42%,68%)">Mantel</span>
+              <span style="width:38px;height:38px;border-radius:50%;border:1px solid hsl(30,10%,22%);display:flex;align-items:center;justify-content:center;font:500 14px/1 'Instrument Sans';color:hsl(32,10%,64%)">P</span>
+            </div>
+            <div style="text-align:center;margin-top:34px;padding:0 34px">
+              <div style="font:400 30px/1.3 Newsreader;color:hsl(36,28%,91%)">Six more stars<br>to movie night</div>
+            </div>
+            <div style="position:relative;width:326px;height:326px;margin:30px auto 0">
+              <sc-for list="{{ arc4 }}" as="n" hint-placeholder-count="10">
+                <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+              </sc-for>
+              <div style="position:absolute;left:{{ arcEnd.left }}px;top:{{ arcEnd.top }}px;width:56px;height:56px;margin-left:-28px;margin-top:-28px;border-radius:50%;border:1px solid hsl(30,10%,26%);display:flex;align-items:center;justify-content:center;font-size:26px">🎬</div>
+              <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:216px;height:216px;border-radius:50%;background:hsl(44,74%,56%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;box-shadow:0 0 70px hsl(44,74%,56%,0.2)">
+                <span style="font-size:46px;line-height:1;color:hsl(26,12%,8%)">★</span>
+                <span style="font:500 25px/1 Newsreader;color:hsl(26,12%,8%)">Add a star</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;padding:0 20px;margin-top:auto">
+              <div style="flex:1;border:1px solid hsl(30,10%,20%);padding:16px;display:flex;align-items:center;gap:11px">
+                <span style="font-size:19px">🎬</span>
+                <span style="font:400 17px/1.2 Newsreader;color:hsl(36,20%,82%)">Reward</span>
+              </div>
+              <div style="flex:1;border:1px solid hsl(30,10%,20%);padding:16px;display:flex;align-items:center;gap:11px">
+                <span style="width:20px;height:20px;background:linear-gradient(100deg,hsl(26,10%,5%) 0%,hsl(28,16%,30%) 100%);border:1px solid hsl(30,10%,26%)"></span>
+                <span style="font:400 17px/1.2 Newsreader;color:hsl(36,20%,82%)">Wall</span>
+              </div>
+              <div style="flex:1;border:1px solid hsl(30,10%,20%);padding:16px;display:flex;align-items:center;gap:11px;opacity:0.5">
+                <span style="font-size:19px">＋</span>
+                <span style="font:400 17px/1.2 Newsreader;color:hsl(36,20%,82%)">Photo</span>
+              </div>
+            </div>
+            <div style="padding:20px 30px 22px;display:flex;justify-content:space-between;align-items:center">
+              <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">New week</span>
+              <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">About</span>
+            </div>
+            <div style="height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px;margin:0 auto 9px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FLOWS ================= -->
+  <section style="display:flex;flex-direction:column;gap:44px">
+    <div>
+      <div style="font:600 14px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(22,42%,68%)">Round three</div>
+      <div style="font:400 44px/1.15 Newsreader;margin-top:12px">The flows, on <a href="#1d">1d</a></div>
+      <div style="font:400 17px/1.5 'Instrument Sans';color:hsl(32,10%,64%);margin-top:10px;max-width:1000px">Star landed, reward picker, custom reward, wall switch, and sign-in. Dark unless noted; the picker is shown in both tones since it's the busiest screen.</div>
+      <div style="height:1px;background:hsl(30,10%,22%);margin-top:22px"></div>
+    </div>
+
+    <div style="display:flex;gap:36px;flex-wrap:wrap;align-items:flex-start">
+
+      <!-- star landed -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Star landed</div>
+        <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+          <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, hsl(44,74%,56%,0.16) 0%, transparent 68%)"></div>
+            <div style="position:relative;font:400 132px/1 Newsreader;color:hsl(44,74%,56%);text-shadow:0 0 60px hsl(44,74%,56%,0.5)">★</div>
+            <div style="position:relative;font:400 34px/1.25 Newsreader;color:hsl(36,28%,91%);margin-top:26px;text-align:center">Five stars</div>
+            <div style="position:relative;font:400 20px/1.4 'Instrument Sans';color:hsl(32,10%,64%);margin-top:12px;text-align:center">Halfway to movie night</div>
+            <div style="position:relative;display:flex;gap:11px;margin-top:38px">
+              <sc-for list="{{ landedDots }}" as="d" hint-placeholder-count="10">
+                <span style="width:{{ d.size }}px;height:{{ d.size }}px;border-radius:50%;background:{{ d.bg }};box-shadow:{{ d.glow }}"></span>
+              </sc-for>
+            </div>
+            <div style="position:absolute;bottom:52px;font:400 17px/1 'Instrument Sans';color:hsl(30,8%,46%)">Tap anywhere to close</div>
+            <div style="position:absolute;bottom:9px;height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- reward picker dark -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Reward picker · dark</div>
+        <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+          <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(36,28%,91%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,8%,46%)">▮▮▮</span></div>
+            <div style="padding:26px 24px 0;display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font:400 30px/1.15 Newsreader;color:hsl(36,28%,91%)">This week's reward</span>
+              <span style="font:400 17px/1 'Instrument Sans';color:hsl(32,10%,64%)">Done</span>
+            </div>
+            <div style="padding:20px 24px 16px;overflow:hidden;flex:1">
+              <sc-for list="{{ rewardGroups }}" as="g" hint-placeholder-count="3">
+                <div style="margin-bottom:16px">
+                  <div style="font:600 12px/1 'Instrument Sans';letter-spacing:0.22em;text-transform:uppercase;color:hsl(30,8%,46%)">{{ g.name }}</div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px">
+                    <sc-for list="{{ g.items }}" as="r" hint-placeholder-count="6">
+                      <div style="display:flex;align-items:center;gap:11px;padding:11px 13px;background:{{ r.bg }};border:1px solid {{ r.ring }};min-height:44px;box-sizing:border-box">
+                        <span style="font-size:22px;line-height:1">{{ r.emoji }}</span>
+                        <span style="font:400 17px/1.2 Newsreader;color:{{ r.fg }}">{{ r.label }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="display:flex;align-items:center;gap:13px;padding:16px;border:1px dashed hsl(30,10%,26%)">
+                <span style="font-size:21px;line-height:1;color:hsl(36,20%,82%)">✎</span>
+                <span style="font:400 18px/1.2 Newsreader;color:hsl(36,20%,82%);flex:1">Make your own</span>
+                <span style="font:400 17px/1 'Instrument Sans';color:hsl(30,8%,46%)">›</span>
+              </div>
+            </div>
+            <div style="height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px;margin:14px auto 9px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- reward picker light -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Reward picker · light</div>
+        <div style="width:422px;height:876px;background:hsl(34,18%,72%);border-radius:54px;padding:16px;box-sizing:border-box">
+          <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(38,30%,91%);position:relative;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(28,30%,18%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,14%,52%)">▮▮▮</span></div>
+            <div style="padding:26px 24px 0;display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font:400 30px/1.15 Newsreader;color:hsl(28,30%,18%)">This week's reward</span>
+              <span style="font:400 17px/1 'Instrument Sans';color:hsl(140,32%,30%)">Done</span>
+            </div>
+            <div style="padding:20px 24px 16px;overflow:hidden;flex:1">
+              <sc-for list="{{ rewardGroupsLight }}" as="g" hint-placeholder-count="3">
+                <div style="margin-bottom:16px">
+                  <div style="font:600 12px/1 'Instrument Sans';letter-spacing:0.22em;text-transform:uppercase;color:hsl(30,14%,52%)">{{ g.name }}</div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px">
+                    <sc-for list="{{ g.items }}" as="r" hint-placeholder-count="6">
+                      <div style="display:flex;align-items:center;gap:11px;padding:11px 13px;background:{{ r.bg }};border:1px solid {{ r.ring }};min-height:44px;box-sizing:border-box">
+                        <span style="font-size:22px;line-height:1">{{ r.emoji }}</span>
+                        <span style="font:400 17px/1.2 Newsreader;color:{{ r.fg }}">{{ r.label }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="display:flex;align-items:center;gap:13px;padding:16px;border:1px dashed hsl(34,24%,78%)">
+                <span style="font-size:21px;line-height:1;color:hsl(30,14%,38%)">✎</span>
+                <span style="font:400 18px/1.2 Newsreader;color:hsl(28,26%,26%);flex:1">Make your own</span>
+                <span style="font:400 17px/1 'Instrument Sans';color:hsl(30,14%,52%)">›</span>
+              </div>
+            </div>
+            <div style="height:5px;width:134px;background:hsl(28,30%,18%,0.28);border-radius:3px;margin:14px auto 9px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- custom reward -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Make your own</div>
+        <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+          <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(36,28%,91%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,8%,46%)">▮▮▮</span></div>
+            <div style="padding:26px 24px 0;display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font:400 17px/1 'Instrument Sans';color:hsl(32,10%,64%)">‹ Back</span>
+              <span style="font:500 17px/1 'Instrument Sans';color:hsl(44,74%,56%)">Save</span>
+            </div>
+            <div style="padding:34px 24px 0;text-align:center">
+              <div style="width:120px;height:120px;border-radius:50%;border:1px solid hsl(30,10%,26%);margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:56px;line-height:1">🍿</div>
+              <div style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%);margin-top:14px">Tap to change</div>
+            </div>
+            <div style="padding:36px 24px 0">
+              <div style="font:600 12px/1 'Instrument Sans';letter-spacing:0.22em;text-transform:uppercase;color:hsl(30,8%,46%)">Call it</div>
+              <div style="font:400 30px/1.2 Newsreader;color:hsl(36,28%,91%);margin-top:14px;padding-bottom:14px;border-bottom:1px solid hsl(44,74%,56%)">Popcorn &amp; pajamas<span style="color:hsl(44,74%,56%)">|</span></div>
+            </div>
+            <div style="padding:32px 24px 0">
+              <div style="font:600 12px/1 'Instrument Sans';letter-spacing:0.22em;text-transform:uppercase;color:hsl(30,8%,46%)">Pick an emoji</div>
+              <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:16px">
+                <sc-for list="{{ emojiPad }}" as="e" hint-placeholder-count="18">
+                  <div style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:24px;background:{{ e.bg }};border:1px solid {{ e.ring }}">{{ e.ch }}</div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="margin-top:auto;padding:0 24px 24px">
+              <div style="height:76px;background:hsl(26,10%,13%);display:flex;align-items:center;gap:14px;padding:0 22px">
+                <span style="font-size:26px;line-height:1">🍿</span>
+                <span style="font:400 21px/1.2 Newsreader;color:hsl(36,28%,91%);flex:1">Popcorn &amp; pajamas</span>
+                <span style="font:400 15px/1 'Instrument Sans';color:hsl(30,8%,46%)">Preview</span>
+              </div>
+            </div>
+            <div style="height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px;margin:0 auto 9px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- wall switch -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Wall switch</div>
+        <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+          <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(36,28%,91%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,8%,46%)">▮▮▮</span></div>
+            <div style="padding:26px 24px 0;display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font:400 30px/1.15 Newsreader;color:hsl(36,28%,91%)">The wall</span>
+              <span style="font:400 17px/1 'Instrument Sans';color:hsl(32,10%,64%)">Done</span>
+            </div>
+            <div style="padding:26px 24px 0">
+              <div style="border:1px solid hsl(44,74%,56%);padding:10px">
+                <div style="height:184px;background:linear-gradient(100deg,hsl(26,10%,5%) 0%,hsl(26,10%,5%,0.55) 46%,hsl(28,18%,30%) 100%);position:relative">
+                  <div style="position:absolute;left:18px;top:22px;font:400 40px/1 Newsreader;color:hsl(36,30%,94%)">8:25</div>
+                  <div style="position:absolute;left:18px;top:74px;font:400 13px/1.5 'Instrument Sans';color:hsl(32,16%,76%)">Movie night · 7:30<br>Dim sum · tomorrow</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 6px 4px">
+                  <span style="font:400 21px/1 Newsreader;color:hsl(36,28%,91%)">Side veil</span>
+                  <span style="font:600 12px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(44,74%,56%)">On the wall</span>
+                </div>
+                <div style="font:400 15px/1.4 'Instrument Sans';color:hsl(30,8%,46%);padding:8px 6px 4px">Your photo, full bleed, with the day set into the shadow.</div>
+              </div>
+            </div>
+            <div style="padding:16px 24px 0">
+              <div style="border:1px solid hsl(30,10%,20%);padding:10px">
+                <div style="height:184px;background:linear-gradient(158deg,hsl(30,32%,89%) 0%,hsl(38,30%,91%) 50%,hsl(100,20%,86%) 100%);position:relative">
+                  <div style="position:absolute;left:18px;top:22px;font:400 40px/1 Newsreader;color:hsl(28,30%,18%)">7:10</div>
+                  <div style="position:absolute;right:18px;top:26px;width:96px;height:118px;background:hsl(40,44%,97%);box-shadow:0 3px 12px hsl(28,30%,18%,0.22);transform:rotate(-4deg)"></div>
+                  <div style="position:absolute;left:18px;top:74px;font:400 13px/1.5 'Instrument Sans';color:hsl(30,14%,38%)">School run · 8:15<br>Soccer · 10:30</div>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:baseline;padding:14px 6px 4px">
+                  <span style="font:400 21px/1 Newsreader;color:hsl(36,28%,91%)">Oat &amp; moss</span>
+                </div>
+                <div style="font:400 15px/1.4 'Instrument Sans';color:hsl(30,8%,46%);padding:8px 6px 4px">A light board: the week, the chores, a stack of snapshots.</div>
+              </div>
+            </div>
+            <div style="margin-top:auto;padding:0 24px 26px;font:400 15px/1.5 'Instrument Sans';color:hsl(30,8%,46%)">Changes appear on the TV within a few seconds.</div>
+            <div style="height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px;margin:0 auto 9px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- sign in -->
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Signed out</div>
+        <div style="width:422px;height:876px;background:hsl(24,10%,4%);border-radius:54px;padding:16px;box-sizing:border-box">
+          <div style="width:390px;height:844px;border-radius:40px;overflow:hidden;background:hsl(26,12%,8%);position:relative;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 30px 0;font:600 14px/1 'Instrument Sans';color:hsl(36,28%,91%)"><span>9:41</span><span style="letter-spacing:0.2em;color:hsl(30,8%,46%)">▮▮▮</span></div>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 34px">
+              <div style="font:600 13px/1 'Instrument Sans';letter-spacing:0.34em;text-transform:uppercase;color:hsl(22,42%,68%)">Mantel</div>
+              <div style="font:400 46px/1.12 Newsreader;color:hsl(36,28%,91%);margin-top:20px">The family wall, from your pocket.</div>
+              <div style="font:400 19px/1.5 'Instrument Sans';color:hsl(32,10%,64%);margin-top:20px">Stars, rewards, and what the living room is showing right now.</div>
+              <div style="display:flex;gap:14px;margin-top:44px">
+                <sc-for list="{{ signInStars }}" as="s" hint-placeholder-count="5">
+                  <span style="font:400 26px/1 Newsreader;color:{{ s.c }};text-shadow:{{ s.g }}">★</span>
+                </sc-for>
+              </div>
+            </div>
+            <div style="padding:0 24px 22px">
+              <div style="height:78px;background:hsl(44,74%,56%);display:flex;align-items:center;justify-content:center">
+                <span style="font:500 24px/1 Newsreader;color:hsl(26,12%,8%)">Sign in</span>
+              </div>
+              <div style="text-align:center;font:400 16px/1 'Instrument Sans';color:hsl(30,8%,46%);margin-top:20px">What is Mantel?</div>
+            </div>
+            <div style="height:5px;width:134px;background:hsl(36,20%,80%,0.3);border-radius:3px;margin:0 auto 9px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SPEC ================= -->
+  <section style="max-width:1180px;display:flex;flex-direction:column;gap:56px;font:400 17px/1.65 'Instrument Sans';color:hsl(36,20%,82%)">
+    <div>
+      <div style="font:400 40px/1.2 Newsreader;color:hsl(36,28%,91%);border-bottom:1px solid hsl(30,10%,20%);padding-bottom:16px;margin-bottom:24px">Recommendation</div>
+      <p style="margin:0;text-wrap:pretty"><a href="#1d">1d</a>. It's the only structure that makes the phone and the wall visibly the same object — the same stepping-stone drawing, the same type, the same restraint — while still being a plain scroll a tired parent can operate one-handed. <a href="#1e">1e</a> is more delightful and worth keeping as a possible "kid mode," but its single key leaves nowhere obvious for photos and chores to land. 1c is out: the tab bar is the one thing in the set that reads like an app rather than like Mantel.</p>
+    </div>
+
+    <div>
+      <div style="font:400 34px/1.2 Newsreader;color:hsl(36,28%,91%);border-bottom:1px solid hsl(30,10%,20%);padding-bottom:14px;margin-bottom:22px">Tokens — Tailwind v4</div>
+      <pre style="margin:0;background:hsl(26,12%,8%);border:1px solid hsl(30,10%,18%);padding:26px 30px;font:400 15px/1.7 ui-monospace,monospace;color:hsl(36,20%,82%);overflow-x:auto">@theme {
+  /* dark (default) */
+  --color-surface:   hsl(26 12% 8%);
+  --color-card:      hsl(26 10% 13%);
+  --color-line:      hsl(30 10% 20%);
+  --color-line-soft: hsl(30 10% 26%);
+  --color-ink:       hsl(36 28% 91%);
+  --color-ink-soft:  hsl(36 20% 82%);
+  --color-ink-dim:   hsl(32 10% 64%);
+  --color-ink-faint: hsl(30 8% 46%);
+  --color-accent:    hsl(22 42% 68%);
+  --color-star:      hsl(44 74% 56%);
+
+  /* light — oat &amp; moss */
+  --color-surface-l:   hsl(38 30% 91%);
+  --color-card-l:      hsl(42 46% 96%);
+  --color-line-l:      hsl(34 24% 84%);
+  --color-ink-l:       hsl(28 30% 18%);
+  --color-ink-soft-l:  hsl(28 26% 26%);
+  --color-ink-dim-l:   hsl(30 14% 38%);
+  --color-ink-faint-l: hsl(30 14% 52%);
+  --color-accent-l:    hsl(140 32% 30%);
+  --color-star-l:      hsl(38 68% 46%);   /* gold darkened for AA on oat */
+
+  /* people (for chores later) */
+  --color-person-alex:  hsl(42 48% 62%);
+  --color-person-heather: hsl(310 16% 68%);
+  --color-person-harbor:  hsl(210 28% 68%);
+
+  --font-display: "Newsreader", serif;    /* opsz axis required */
+  --font-text:    "Instrument Sans", sans-serif;
+}</pre>
+    </div>
+
+    <div>
+      <div style="font:400 34px/1.2 Newsreader;color:hsl(36,28%,91%);border-bottom:1px solid hsl(30,10%,20%);padding-bottom:14px;margin-bottom:22px">Type &amp; rhythm</div>
+      <div style="display:grid;grid-template-columns:130px 1fr;gap:9px 30px">
+        <div style="color:hsl(36,28%,91%)">36 / 1.1</div><div>Screen title — Newsreader 400 ("Alex's week", "The family wall…" runs 46).</div>
+        <div style="color:hsl(36,28%,91%)">30 / 1.15</div><div>Sheet title — Newsreader 400.</div>
+        <div style="color:hsl(36,28%,91%)">38 / 1</div><div>Star count — Newsreader 400, tabular-nums; "of 10 stars" at 21 Newsreader 300.</div>
+        <div style="color:hsl(36,28%,91%)">26 / 1</div><div>Primary button label — Newsreader 500 on gold.</div>
+        <div style="color:hsl(36,28%,91%)">19 / 1.2</div><div>List row title — Newsreader 400.</div>
+        <div style="color:hsl(36,28%,91%)">17 / 1.2</div><div>Reward chip label, secondary actions — Newsreader 400 / Instrument Sans 400.</div>
+        <div style="color:hsl(36,28%,91%)">13 / 1</div><div>Section label — Instrument Sans 600, .22em, uppercase, ink-dim. Eyebrow uses .3em.</div>
+        <div style="color:hsl(36,28%,91%)">Grid</div><div>390 wide; 24px page padding; cards inset 16px, 22–26px internal padding; 16px between cards; 10–12px between chips. No radii anywhere except circles and the phone shell — square corners are the Mantel tell.</div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font:400 34px/1.2 Newsreader;color:hsl(36,28%,91%);border-bottom:1px solid hsl(30,10%,20%);padding-bottom:14px;margin-bottom:22px">Components</div>
+      <div style="display:grid;grid-template-columns:200px 1fr;gap:10px 30px">
+        <div style="color:hsl(36,28%,91%)">Star plate</div><div>Card, 104px drawing area. Ten fixed points, x = 3 + i·10.3%, y = 50 + 30·sin(i·0.8)% — identical formula to the wall's D5 so the two read as one artwork. Earned = ★ Newsreader 400 / 26px in <span style="color:hsl(36,28%,91%)">star</span> with <code style="font:400 15px ui-monospace">text-shadow: 0 0 14px hsl(44 74% 56% / .5)</code>; unearned = 8px <span style="color:hsl(36,28%,91%)">line-soft</span> dot. Reward emoji + 60px hairline plate at the right end.</div>
+        <div style="color:hsl(36,28%,91%)">Add a star</div><div>Full-bleed inside the card, 92px tall, solid <span style="color:hsl(36,28%,91%)">star</span>, ink = surface. Press: scale .98, 90ms. Never disabled; at 10 of 10 it reads "Add a bonus star" and the plate goes gold.</div>
+        <div style="color:hsl(36,28%,91%)">Star landed</div><div>Full-screen overlay, ~1.6s, tap-to-dismiss. Radial gold wash at 16%, a 132px ★ scaling 0.6 → 1 with a 300ms spring, the ordinal in Newsreader 34, one line of plain-language distance, then ten dots where the new one is 12px and lit. No confetti, no sound by default.</div>
+        <div style="color:hsl(36,28%,91%)">Reward picker</div><div>Full-height sheet. 15 presets in three named groups (Out &amp; about / At home / Little treats), two per row — emoji 22px + Newsreader 17 label, 44px minimum row height. Selected row: 1px <span style="color:hsl(36,28%,91%)">star</span> ring + card fill. "Make your own" is a dashed row pinned under the last group.</div>
+        <div style="color:hsl(36,28%,91%)">Custom reward</div><div>120px emoji well, a 6×3 emoji pad, and a Newsreader 30 title field underlined in <span style="color:hsl(36,28%,91%)">star</span> while focused. A live preview row sits above the keyboard so you see the chip exactly as the wall will show it.</div>
+        <div style="color:hsl(36,28%,91%)">Wall switch</div><div>Two full-width preview tiles that are miniature renderings of the actual layouts (not screenshots) with a one-line description; the live one carries the gold hairline and an "On the wall" label. Selecting pushes immediately — no Save.</div>
+        <div style="color:hsl(36,28%,91%)">Future homes</div><div>"Add a photo" and "Chores" already sit as a 50/50 pair of dimmed cards under the wall card; when they ship they light up and gain their own sheets. Nothing else moves.</div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font:400 34px/1.2 Newsreader;color:hsl(36,28%,91%);border-bottom:1px solid hsl(30,10%,20%);padding-bottom:14px;margin-bottom:22px">Touch, motion, contrast</div>
+      <p style="margin:0 0 12px">Every tappable row is ≥44px; the primary action is 92px and sits in the lower third. Motion is limited to three things: the button press, the star-landed overlay, and a 200ms crossfade between sheets. Nothing loops.</p>
+      <p style="margin:0">Dark: ink 14.6:1, ink-dim 6.8:1, ink-faint 3.6:1 (≥17px only), accent 6.9:1, surface-on-gold 11.3:1. Light: ink 12.9:1 on oat, ink-dim 6.2:1, moss accent 6.8:1, and gold is darkened to <code style="font:400 15px ui-monospace">hsl(38 68% 46%)</code> so cream-on-gold clears 4.6:1 — the one token that differs between tones by more than lightness.</p>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;3360px&quot;},&quot;goal&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;min&quot;:5,&quot;max&quot;:14,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Star bank&quot;},&quot;earned&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:4,&quot;min&quot;:0,&quot;max&quot;:10,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Star bank&quot;},&quot;reward&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;🎬 Movie night&quot;,&quot;options&quot;:[&quot;🎬 Movie night&quot;,&quot;🏊 Pool time&quot;,&quot;🦁 Zoo day&quot;,&quot;⛺ Camping night&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Star bank&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const GOLD = 'hsl(44,74%,56%)';
+    const GOLD_L = 'hsl(38,68%,46%)';
+    const QUIET = 'hsl(30,10%,26%)';
+    const QUIET_L = 'hsl(34,24%,80%)';
+
+    const star = (on, size, gold, quiet, dot) => on
+      ? { size, off:-size/2, bg:'transparent', fg:gold, glyph:'★', glow:'0 0 14px hsl(44 74% 56% / 0.5)' }
+      : { size:dot, off:-dot/2, bg:quiet, fg:'transparent', glyph:'', glow:'none' };
+
+    // stepping-stone field, same formula as the wall's D5
+    const stones = (n, w, h, gold, quiet, size=26, dot=8) =>
+      Array.from({length:10},(_,i) => ({
+        left:(3+i*10.3)/100*w, top:(50+30*Math.sin(i*0.8))/100*h, ...star(i<n, size, gold, quiet, dot)
+      }));
+
+    // points on a circle, 0 = top, clockwise
+    const ring = (n, box, r, size, gold, quiet, from=-90, sweep=360) =>
+      Array.from({length:10},(_,i) => {
+        const a = (from + sweep*(i/(sweep===360?10:9))) * Math.PI/180;
+        return { left:box/2 + r*Math.cos(a), top:box/2 + r*Math.sin(a), ...star(i<n, size, gold, quiet, 9) };
+      });
+
+    const arcPts = ring(4, 326, 143, 26, GOLD, QUIET, 140, 260);
+    const arcEndA = (140 + 260*(9/9) + 16) * Math.PI/180;
+
+    const REWARDS = [
+      { name:'Out & about', items:[['🎬','Movie night'],['🏊','Pool time'],['🦁','Zoo day'],['🚲','Biking trip'],['⛺','Camping night'],['🏞️','Park picnic']] },
+      { name:'At home', items:[['🧁','Bake together'],['🎲','Game night'],['🛠️','Build a fort'],['🎨','Art afternoon'],['📚','Extra story']] },
+      { name:'Little treats', items:[['🍦','Ice cream'],['🍕','Pizza pick'],['🧃','Boba run'],['🪀','New sticker']] }
+    ];
+    const group = (light) => REWARDS.map(g => ({
+      name:g.name,
+      items:g.items.map(([emoji,label]) => {
+        const sel = label === 'Movie night';
+        return light
+          ? { emoji, label, bg: sel ? 'hsl(42,46%,96%)' : 'transparent', ring: sel ? GOLD_L : 'hsl(34,24%,82%)', fg:'hsl(28,30%,18%)' }
+          : { emoji, label, bg: sel ? 'hsl(26,10%,13%)' : 'transparent', ring: sel ? GOLD : 'hsl(30,10%,20%)', fg:'hsl(36,28%,91%)' };
+      })
+    }));
+
+    const PAD = ['🍿','🎠','🚀','🐳','🍩','🎈','🏰','🐝','🌊','🚂','🥁','🧩','🦕','🍉','⚽','🪁','🎪','🐙'];
+
+    // 1f — scattered sky, three star sizes
+    const SKY = [[8,66],[19,32],[27,78],[38,44],[47,20],[55,70],[64,38],[73,82],[81,52],[89,26]];
+    const sky4 = SKY.map(([px,py],i) => {
+      const size = [30,24,27,22,26,23,29,21,25,28][i];
+      return { left:px/100*342, top:py/100*180, ...star(i<4, size, GOLD, 'hsl(40,20%,70%,0.28)', 5) };
+    });
+    const skyDust = Array.from({length:14},(_,i) => ({
+      left:(7+i*24.5)%336, top:(19+i*47)%164, o:(0.1+((i*7)%5)*0.06).toFixed(2)
+    }));
+
+    return {
+      sky4, skyDust,
+      whisper4: stones(4, 288, 132, GOLD, 'hsl(30,10%,22%)', 24, 7),
+      plate4Light: stones(4, 262, 104, GOLD_L, QUIET_L, 28, 9),
+      tally4: Array.from({length:10},(_,i) => i < 4
+        ? { bg:'transparent', ring:GOLD, fg:GOLD, glyph:'★' }
+        : { bg:'transparent', ring:'hsl(30,10%,20%)', fg:'transparent', glyph:'' }),
+      ledgerRows: [
+        { label:'Reward', value:'🎬 Movie night', action:'Change', op:1 },
+        { label:'Wall', value:'Side veil', action:'Switch', op:1 },
+        { label:'Week', value:'Started Monday, Jul 20', action:'Reset', op:1 },
+        { label:'Photos', value:'Add a photo', action:'Soon', op:0.45 },
+        { label:'Chores', value:'Alex · 3 open', action:'Soon', op:0.45 }
+      ],
+      stones4: stones(4, 342, 76, GOLD, QUIET),
+      stones4Light: stones(4, 342, 76, GOLD_L, QUIET_L),
+      plate4: stones(4, 262, 104, GOLD, QUIET, 28, 9),
+      ring4: ring(4, 300, 128, 24, GOLD, QUIET),
+      ring4Light: ring(4, 300, 128, 24, GOLD_L, QUIET_L),
+      arc4: arcPts,
+      arcEnd: { left: 163 + 143*Math.cos(arcEndA), top: 163 + 143*Math.sin(arcEndA) },
+      grid4: Array.from({length:10},(_,i) => i < 4
+        ? { ring:'transparent', bg:'transparent', fg:GOLD, glyph:'★', glow:'0 0 14px hsl(44 74% 56% / 0.5)' }
+        : { ring:'hsl(30,10%,20%)', bg:'transparent', fg:'transparent', glyph:'', glow:'none' }),
+      grid4Light: Array.from({length:10},(_,i) => i < 4
+        ? { ring:'transparent', bg:'transparent', fg:GOLD_L, glyph:'★', glow:'none' }
+        : { ring:'hsl(34,24%,82%)', bg:'transparent', fg:'transparent', glyph:'', glow:'none' }),
+      landedDots: Array.from({length:10},(_,i) => i === 4
+        ? { size:12, bg:GOLD, glow:'0 0 16px hsl(44 74% 56% / 0.65)' }
+        : (i < 5 ? { size:9, bg:GOLD, glow:'none' } : { size:9, bg:QUIET, glow:'none' })),
+      signInStars: Array.from({length:5},(_,i) => ({
+        c: i < 3 ? GOLD : QUIET, g: i < 3 ? '0 0 16px hsl(44 74% 56% / 0.45)' : 'none'
+      })),
+      rewardGroups: group(false),
+      rewardGroupsLight: group(true),
+      emojiPad: PAD.map((ch,i) => i === 0
+        ? { ch, bg:'hsl(26,10%,13%)', ring:GOLD }
+        : { ch, bg:'transparent', ring:'hsl(30,10%,20%)' })
+    };
+  }
+}
+</script>
+</body>
+</html>

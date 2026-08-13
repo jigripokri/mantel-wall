@@ -1,0 +1,71 @@
+# Minimal Supabase project config. `supabase link` fills in project_id.
+project_id = "mantel"
+
+# NOTE: the URLs below are placeholders. `npm run dev` and the whole mock-data
+# preview work without touching this file; you only need it once you have a
+# Supabase project and a deployed origin. See SETUP.md.
+
+# Where magic links come back to. Without this, Supabase falls back to its
+# default Site URL of http://localhost:3000 and every sign-in link dead-ends on
+# a machine that isn't running anything — the token lands in the fragment of a
+# page that never loads. A requested `emailRedirectTo` is only honoured if it
+# matches this list, so the wildcards are load-bearing, not decoration.
+#
+# WARNING: `supabase config push` pushes the WHOLE [auth] block, not a diff.
+# Anything not declared here silently reverts to the CLI's own defaults, which
+# are not the project's defaults. Adding only site_url the first time also
+# disabled TOTP MFA and email confirmations and dropped the auth-email rate
+# limit from 1m to 1s. Everything below is declared explicitly so a future push
+# is faithful. If you add an auth setting in the dashboard, mirror it here or
+# the next push will undo it.
+#
+[auth]
+# Replace both of these with your own deployment's origin before pushing config.
+site_url = "https://your-project.vercel.app"
+additional_redirect_urls = [
+  "https://your-project.vercel.app/**",
+  "http://localhost:5000/**",
+]
+# Access-token lifetime — one week (was the 1h default). This is why the site
+# kept logging people out: the phone rarely stays open long enough for the
+# client's silent refresh to fire, so the 1h token died and the next visit
+# forced a new magic link. A week-long token means anyone who uses the wall or
+# app even weekly stays signed in without a refresh; the client extends it on
+# each visit. Safe here because is_family() re-checks the allowlist on every
+# query — an old token never outlives being removed from the family.
+jwt_expiry = 604800
+# Refresh tokens don't expire and rotate on use; pinned so a config push can't
+# quietly reset them (see the warning above).
+enable_refresh_token_rotation = true
+refresh_token_reuse_interval = 10
+
+[auth.mfa.totp]
+enroll_enabled = true
+verify_enabled = true
+
+[auth.email]
+enable_confirmations = true
+# Rate limit on auth emails. 1s (the CLI default) makes the sign-in endpoint a
+# free mail cannon pointed at any address someone types.
+max_frequency = "1m0s"
+otp_length = 8
+
+# DORMANT — uncomment once the project has a custom SMTP sender (or a paid
+# plan). The template (supabase/templates/magic_link.html) leads with the
+# 8-digit code, then the link. The code exists for the installed (home-screen)
+# app: a tapped link opens the system browser — a different storage container —
+# so on an iPhone the link signs Safari in and leaves the app signed out; the
+# code signs in inside the app. Free-tier Supabase on the default email provider
+# REJECTS template changes (400 on config push), and the push is atomic, so
+# leaving this active would break every future `supabase config push`. Until
+# then, codes are minted out-of-band via the admin generate_link API (the
+# response's email_otp field).
+# [auth.email.template.magic_link]
+# subject = "Sign in to Mantel"
+# content_path = "./supabase/templates/magic_link.html"
+
+[functions.sync-calendar]
+verify_jwt = false
+
+[functions.sync-weather]
+verify_jwt = false

@@ -1,0 +1,22 @@
+node_modules
+dist
+*.tsbuildinfo
+.env
+.env.local
+*.local
+.DS_Store
+.vercel
+supabase/.temp
+supabase/.branches
+
+.vercel
+
+# Design bundles are unpacked into design/<name>/; the archive itself is noise.
+design/*.zip
+
+# Local wall photos, for iterating the design against a real image. Served only
+# by the dev-only `mantel-dev-photos` plugin in vite.config.ts, so they cannot
+# reach a build — deliberately NOT under public/, which Vite copies into dist/
+# verbatim. /tv has no auth until v2, so a published family photo would be
+# world-readable. Real photos belong in the Supabase Storage `photos` bucket.
+dev-photos/

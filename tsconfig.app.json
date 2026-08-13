@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  // The canonical ICS parser lives under supabase/functions/_shared so the Deno
+  // Edge Function can import it without the CLI walking outside its root; it is
+  // named explicitly (not the whole dir) because its siblings use Deno-only
+  // `jsr:` specifiers that would not typecheck here.
+  "include": ["src", "supabase/functions/_shared/ics.ts", "supabase/functions/_shared/tz.ts"]
+}

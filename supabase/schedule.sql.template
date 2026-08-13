@@ -1,0 +1,37 @@
+-- Runtime cron — DO NOT run until the Edge Functions are deployed and their
+-- secrets (CALENDAR_FEEDS, WEATHER_LAT/LON, service role) are set. Held out of
+-- migrations on purpose (see the "Claude build loops only" scope decision).
+--
+-- Apply by: fill in <PROJECT_REF> and <ANON_KEY>, then run against the DB.
+-- Requires the pg_cron and pg_net extensions (enable in the Supabase dashboard).
+
+create extension if not exists pg_cron;
+create extension if not exists pg_net;
+
+-- Calendar every 15 minutes.
+select cron.schedule(
+  'sync-calendar',
+  '*/15 * * * *',
+  $$
+  select net.http_post(
+    url := 'https://<PROJECT_REF>.supabase.co/functions/v1/sync-calendar',
+    headers := jsonb_build_object('Authorization', 'Bearer <ANON_KEY>')
+  );
+  $$
+);
+
+-- Weather every 30 minutes.
+select cron.schedule(
+  'sync-weather',
+  '*/30 * * * *',
+  $$
+  select net.http_post(
+    url := 'https://<PROJECT_REF>.supabase.co/functions/v1/sync-weather',
+    headers := jsonb_build_object('Authorization', 'Bearer <ANON_KEY>')
+  );
+  $$
+);
+
+-- To inspect / remove:
+--   select * from cron.job;
+--   select cron.unschedule('sync-calendar');

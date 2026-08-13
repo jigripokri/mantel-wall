@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mantel 5B — Side veil (design reference)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;height:100%;background:#000;overflow:hidden}
+  #stage{position:fixed;top:50%;left:50%;width:1920px;height:1080px;transform-origin:center;background:hsl(26,12%,8%);overflow:hidden}
+  @keyframes kenburns{from{transform:scale(1) translate(0,0)}to{transform:scale(1.08) translate(-14px,8px)}}
+  .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kenburns 45s ease-in-out infinite alternate}
+  .veil{position:absolute;inset:0;background:linear-gradient(100deg,hsl(26 10% 5%/.94) 0%,hsl(26 10% 5%/.78) 34%,hsl(26 10% 5%/0) 62%)}
+  .col{position:absolute;top:60px;left:96px;bottom:60px;width:560px;display:flex;flex-direction:column;text-shadow:0 2px 28px hsl(26 12% 7%/.6)}
+  .greeting{font:600 26px/1 'Instrument Sans';letter-spacing:.28em;text-transform:uppercase;color:hsl(30,48%,74%)}
+  .clock{display:flex;align-items:baseline;gap:16px;margin-top:16px}
+  .time{font:400 120px/1 Newsreader;letter-spacing:-.01em;color:hsl(36,30%,94%);font-variant-numeric:tabular-nums}
+  .ampm{font:300 44px/1 Newsreader;color:hsl(32,16%,76%)}
+  .date{font:italic 300 34px/1 Newsreader;color:hsl(32,16%,76%);margin-top:12px}
+  .date b{font:400 30px/1 'Instrument Sans';font-style:normal;font-weight:400}
+  .rule{height:1px;background:hsl(36 20% 80%/.18);margin-top:38px}
+  .label{font:600 26px/1 'Instrument Sans';letter-spacing:.24em;text-transform:uppercase;color:hsl(32,16%,76%);margin-top:34px}
+  .label+.row{margin-top:20px}
+  .row{display:flex;align-items:baseline;gap:14px;margin-top:16px}
+  .dot{width:11px;height:11px;border-radius:50%;flex:none;transform:translateY(-2px)}
+  .ring{width:11px;height:11px;border-radius:50%;flex:none;box-sizing:border-box;border:2px solid;transform:translateY(-1px)}
+  .title{font:400 34px/1.25 Newsreader;color:hsl(36,30%,94%)}
+  .title.later{color:hsl(36,20%,84%)}
+  .meta{font:400 27px/1 'Instrument Sans';color:hsl(32,16%,76%)}
+  .done{opacity:.4}
+  .status{margin-top:auto;width:8px;height:8px;border-radius:50%;background:hsl(36 20% 80%/.25)}
+</style>
+</head>
+<body>
+<div id="stage">
+  <img class="photo" src="sample-photo.png" alt="">
+  <div class="veil"></div>
+  <div class="col">
+    <div class="greeting">Good evening</div>
+    <div class="clock"><span class="time">8:25</span><span class="ampm">PM</span></div>
+    <div class="date">Saturday, July 18 · <b>65° Clear</b></div>
+    <div class="rule"></div>
+    <div class="label">Tonight &amp; tomorrow</div>
+    <div class="row"><span class="dot" style="background:hsl(310,16%,68%)"></span><span class="title">Movie night <span class="meta">7:30 PM</span></span></div>
+    <div class="row"><span class="dot" style="background:hsl(42,48%,62%)"></span><span class="title later">Dim sum with Nana <span class="meta">Tomorrow 10:00</span></span></div>
+    <div class="row"><span class="dot" style="background:hsl(210,28%,68%)"></span><span class="title later">Swim meet <span class="meta">Tomorrow 1:00</span></span></div>
+    <div class="label" style="margin-top:44px">Tasks</div>
+    <div class="row"><span class="ring" style="border-color:hsl(210,28%,68%)"></span><span class="title">Pack the swim bag <span class="meta">Meera</span></span></div>
+    <div class="row"><span class="ring" style="border-color:hsl(42,48%,62%)"></span><span class="title">Sign the permission slip <span class="meta">Priya</span></span></div>
+    <div class="row done"><span class="dot" style="background:hsl(115,18%,60%)"></span><span class="title later">Water the garden <span class="meta">Dev · done</span></span></div>
+    <div class="status"></div>
+  </div>
+</div>
+<script>
+  function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);document.getElementById('stage').style.transform=`translate(-50%,-50%) scale(${s})`;}
+  addEventListener('resize',fit);fit();
+</script>
+</body>
+</html>

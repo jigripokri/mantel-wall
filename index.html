@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- This is a private family wall on a public host. Never let it be indexed.
+         Belt and braces: this tag, public/robots.txt, and an X-Robots-Tag header
+         in vercel.json — the header is the one that survives a crawler ignoring
+         robots.txt or reaching a URL that never renders the tag. -->
+    <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
+    <title>Mantel</title>
+    <!-- Installable app. This exists for one reason: iOS wipes a plain Safari
+         tab's storage — the saved session included — after 7 days of Safari use
+         without visiting the site, which kept signing the family out. A
+         standalone home-screen app gets its own storage, exempt from that purge:
+         signed in once, signed in for good. Sign in BEFORE adding to the Home
+         Screen — iOS copies the site's data into the app container at install. -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/mantel-192.png" />
+    <link rel="apple-touch-icon" href="/icons/mantel-180.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Mantel" />
+    <!-- Opaque black bar, not translucent: the companion's header starts at the
+         top of the page and must not sit under the clock/notch. -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="theme-color" content="#171412" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Newsreader carries the `opsz` axis on purpose: the clock renders at 120px
+         and the optical size axis is what keeps it from looking spindly there. -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Instrument+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,3 @@
+# Mantel is a private family wall. Nothing here should ever be indexed.
+User-agent: *
+Disallow: /

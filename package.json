@@ -1,0 +1,43 @@
+{
+  "name": "mantel",
+  "version": "0.1.0",
+  "description": "A family portal for a wall-mounted TV — calendar, chores and photos, rendered as framed decor.",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --port 5000",
+    "check": "tsc -b --noEmit",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "verify": "node scripts/verify.mjs",
+    "db:push": "npx --yes supabase@latest db push",
+    "db:reset": "npx --yes supabase@latest db reset"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "ical.js": "^2.2.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/node": "^22.20.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.19.0",
+    "vite": "^6.0.0",
+    "vitest": "^3.2.7"
+  }
+}

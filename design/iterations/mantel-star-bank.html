@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:hsl(26,10%,5%);}
+a{color:hsl(44,74%,56%);text-decoration:none} a:hover{color:hsl(36,28%,91%)}
+</style>
+</helmet>
+<div style="font-family:'Instrument Sans',sans-serif;color:hsl(36,28%,91%);padding:80px;display:flex;flex-direction:column;gap:76px;width:2620px">
+
+  <div style="max-width:1100px">
+    <div style="font:600 14px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(44,74%,56%)">Mantel · star bank study</div>
+    <div style="font:400 60px/1.1 Newsreader;margin-top:20px">Ten stars, one treat, no progress bar.</div>
+    <div style="font:400 19px/1.6 'Instrument Sans';color:hsl(32,10%,64%);margin-top:20px;text-wrap:pretty">Four directions, each in the day and evening skins across empty / 3 / 7 / earned. Then two refinements, shown at real size inside the 620px side panel. Everything is CSS-only geometry — dots, glyphs, hairlines, one gradient — so it ports to React + Tailwind without SVG or JS.</div>
+  </div>
+
+  <!-- ============ D5 · LOCKED ============ -->
+  <div>
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <span style="font:600 14px/1 'Instrument Sans';letter-spacing:0.1em;color:hsl(26,12%,8%);background:hsl(44,74%,56%);padding:6px 12px">D5 · Locked</span>
+      <span style="font:600 17px/1 'Instrument Sans';color:hsl(36,28%,91%)">Stepping stones — graphic only, no count</span>
+    </div>
+    <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);margin-top:10px;max-width:1000px">D4's treatment, locked: ten stones on a gentle rise, the reward waiting under a hairline plate at the end. No numerals, no labels, no connecting trail. The tenth star turns the plate gold and lights the reward — that is the entire celebration. Rendered at the 620px column width it ships in, in both skins, at empty / 3 / 7 / earned.</div>
+    <div style="display:grid;grid-template-columns:repeat(4,620px);gap:20px;margin-top:24px">
+      <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Empty</div>
+      <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Three</div>
+      <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Seven</div>
+      <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Earned</div>
+      <sc-for list="{{ locked }}" as="t" hint-placeholder-count="8">
+        <div style="width:620px;height:260px;background:{{ t.panel }};position:relative;overflow:hidden">
+          <div style="position:absolute;left:44px;top:64px;width:400px;height:132px">
+            <sc-for list="{{ t.nodes }}" as="n" hint-placeholder-count="10">
+              <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+            </sc-for>
+          </div>
+          <div style="position:absolute;right:40px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:14px">
+            <span style="font-size:48px;line-height:1;opacity:{{ t.rewardOpacity }};text-shadow:{{ t.rewardGlow }}">{{ t.reward }}</span>
+            <div style="width:84px;height:{{ t.plateH }}px;background:{{ t.plate }}"></div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div>
+    <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:hsl(32,10%,64%);margin-bottom:8px">D5 in context — 13A day panel and 13B evening panel</div>
+    <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);max-width:1000px;margin-bottom:22px">Sitting beneath the schedule at real size. The label above it is the panel's own section heading — the star bank itself carries no type.</div>
+    <div style="display:flex;gap:28px">
+      <sc-for list="{{ lockedContext }}" as="c" hint-placeholder-count="2">
+        <div style="width:620px;background:{{ c.panel }};padding:44px 48px;box-sizing:border-box">
+          <div style="font:600 26px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:{{ c.dim }}">{{ c.heading }}</div>
+          <sc-for list="{{ c.rows }}" as="r" hint-placeholder-count="4">
+            <div style="display:flex;align-items:baseline;gap:13px;padding:14px 0;border-bottom:1px solid {{ c.hair }}">
+              <span style="width:10px;height:10px;border-radius:50%;background:{{ r.color }};flex:none;transform:translateY(-2px)"></span>
+              <span style="font:400 32px/1.25 Newsreader;color:{{ c.ink }}">{{ r.title }} <span style="font:400 26px/1 'Instrument Sans';color:{{ c.dim }}">{{ r.meta }}</span></span>
+            </div>
+          </sc-for>
+          <div style="font:600 26px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:{{ c.dim }};margin-top:34px">Alex's stars</div>
+          <div style="position:relative;height:200px;margin-top:10px">
+            <div style="position:absolute;left:0;top:34px;width:376px;height:132px">
+              <sc-for list="{{ c.nodes }}" as="n" hint-placeholder-count="10">
+                <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+              </sc-for>
+            </div>
+            <div style="position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:14px">
+              <span style="font-size:48px;line-height:1;opacity:{{ c.rewardOpacity }};text-shadow:{{ c.rewardGlow }}">{{ c.reward }}</span>
+              <div style="width:84px;height:{{ c.plateH }}px;background:{{ c.plate }}"></div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;font:400 17px/1.65 'Instrument Sans';color:hsl(36,20%,82%)">
+    <div style="font:400 34px/1.2 Newsreader;color:hsl(36,28%,91%);border-bottom:1px solid hsl(30,10%,20%);padding-bottom:14px;margin-bottom:22px">D5 locked geometry</div>
+    <div style="display:grid;grid-template-columns:250px 1fr;gap:10px 30px">
+      <div style="color:hsl(36,28%,91%)">Footprint</div><div>620 × 260 inside the side panel (no frame, no radius, no shadow — the panel's own background shows through). In context it occupies 200px under the schedule's section heading.</div>
+      <div style="color:hsl(36,28%,91%)">Stone field</div><div>400 × 132, inset 44px from the panel's left padding edge, vertically centred. Ten points, x = 3 + i·10.3 (% of width), y = 50 + 30·sin(i·0.8) (% of height), i = 0…9. Positions are constant — the same ten places every week.</div>
+      <div style="color:hsl(36,28%,91%)">Earned stone</div><div>★ glyph, Newsreader 400, 32px, <span style="color:hsl(36,28%,91%)">star</span> gold, centred on its point (−50% both axes), <code style="font:400 15px ui-monospace">text-shadow: 0 0 18px hsl(44 74% 56% / 0.5)</code>.</div>
+      <div style="color:hsl(36,28%,91%)">Unearned stone</div><div>10px circle, <span style="color:hsl(36,28%,91%)">star-quiet</span> (day <code style="font:400 15px ui-monospace">hsl(34 20% 82%)</code> / evening <code style="font:400 15px ui-monospace">hsl(30 12% 30%)</code>). No glyph, no border, no glow.</div>
+      <div style="color:hsl(36,28%,91%)">Reward</div><div>Right-aligned, vertically centred, 40px inset: emoji at 48px, then a 14px gap, then an 84px plate rule. Plate is 1px <span style="color:hsl(36,28%,91%)">line</span> and the emoji sits at 0.7 opacity (0.4 at zero stars).</div>
+      <div style="color:hsl(36,28%,91%)">Earned state</div><div>Plate thickens to 2px and turns <span style="color:hsl(36,28%,91%)">star</span> gold; emoji goes to full opacity with <code style="font:400 15px ui-monospace">text-shadow: 0 0 30px hsl(44 74% 56% / 0.45)</code>. Nothing else changes — no copy, no badge, no layout shift.</div>
+      <div style="color:hsl(36,28%,91%)">Goal ≠ 10</div><div>Recompute x as <code style="font:400 15px ui-monospace">3 + i·(93/(goal−1))</code> and keep the same sine on y; the field absorbs 5–14 stones without touching anything else.</div>
+      <div style="color:hsl(36,28%,91%)">Idle polish</div><div>Optional: the most recently earned stone breathes its glow 0.35 → 0.6 over 6s, <code style="font:400 15px ui-monospace">ease-in-out infinite alternate</code>. State never depends on it.</div>
+    </div>
+  </div>
+
+  <!-- ============ DIRECTION 1 · CONSTELLATION ============ -->
+  <div>
+    <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:hsl(32,10%,64%)">D1 · Constellation — the week draws an asterism</div>
+    <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);margin-top:8px;max-width:1000px">Ten fixed points. Each star earned lights a point and draws the hairline to the next one, so the shape completes as the week does. Unearned points stay as quiet dots — present, not pleading.</div>
+    <div style="display:grid;grid-template-columns:repeat(4,600px);gap:20px;margin-top:22px">
+      <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Empty</div>
+      <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Three</div>
+      <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Seven</div>
+      <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:hsl(30,8%,52%)">Earned</div>
+      <sc-for list="{{ constellation }}" as="t" hint-placeholder-count="8">
+        <div style="width:600px;height:300px;background:{{ t.panel }};position:relative;overflow:hidden">
+          <div style="position:absolute;left:40px;top:52px;width:520px;height:200px">
+            <sc-for list="{{ t.lines }}" as="l" hint-placeholder-count="9">
+              <div style="position:absolute;left:{{ l.x }}px;top:{{ l.y }}px;width:{{ l.w }}px;height:1px;background:{{ l.c }};transform:rotate({{ l.a }}deg);transform-origin:0 50%"></div>
+            </sc-for>
+            <sc-for list="{{ t.nodes }}" as="n" hint-placeholder-count="10">
+              <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+            </sc-for>
+          </div>
+          <div style="position:absolute;left:40px;bottom:26px;font:400 28px/1 Newsreader;color:{{ t.dim }};font-variant-numeric:tabular-nums">{{ t.count }}</div>
+          <div style="position:absolute;right:36px;bottom:20px;display:flex;align-items:center;gap:14px">
+            <sc-if value="{{ t.full }}" hint-placeholder-val="{{ false }}">
+              <span style="font:600 26px/1 'Instrument Sans';letter-spacing:0.2em;text-transform:uppercase;color:{{ t.accent }}">Earned</span>
+            </sc-if>
+            <span style="font-size:44px;line-height:1;opacity:{{ t.rewardOpacity }}">{{ t.reward }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ DIRECTION 2 · VESSEL ============ -->
+  <div>
+    <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:hsl(32,10%,64%)">D2 · Vessel — a jar of stars filling up</div>
+    <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);margin-top:8px;max-width:1000px">A hairline vessel with ten resting places; stars settle in from the bottom. The reward rides as an engraved plate on the glass, so the treat and the tally are one object.</div>
+    <div style="display:grid;grid-template-columns:repeat(4,600px);gap:20px;margin-top:22px">
+      <sc-for list="{{ vessel }}" as="t" hint-placeholder-count="8">
+        <div style="width:600px;height:300px;background:{{ t.panel }};position:relative;overflow:hidden;display:flex;align-items:center;gap:40px;padding:0 44px;box-sizing:border-box">
+          <div style="position:relative;width:250px;height:210px;border:1px solid {{ t.stroke }};border-radius:10px 10px 46px 46px;flex:none">
+            <div style="position:absolute;left:76px;right:76px;top:-13px;height:12px;border:1px solid {{ t.stroke }};border-bottom:none;border-radius:4px 4px 0 0"></div>
+            <sc-for list="{{ t.slots }}" as="s" hint-placeholder-count="10">
+              <div style="position:absolute;left:{{ s.left }}%;top:{{ s.top }}%;width:{{ s.size }}px;height:{{ s.size }}px;margin-left:{{ s.off }}px;margin-top:{{ s.off }}px;border-radius:50%;background:{{ s.bg }};color:{{ s.fg }};font:400 {{ s.size }}px/1 Newsreader;text-align:center;text-shadow:{{ s.glow }}">{{ s.glyph }}</div>
+            </sc-for>
+          </div>
+          <div>
+            <div style="font-size:44px;line-height:1;opacity:{{ t.rewardOpacity }};margin-bottom:14px">{{ t.reward }}</div>
+            <div style="font:400 60px/1 Newsreader;color:{{ t.ink }};font-variant-numeric:tabular-nums">{{ t.n }}<span style="font:300 34px/1 Newsreader;color:{{ t.dim }}"> / 10</span></div>
+            <sc-if value="{{ t.full }}" hint-placeholder-val="{{ false }}">
+              <div style="font:600 26px/1.3 'Instrument Sans';letter-spacing:0.16em;text-transform:uppercase;color:{{ t.accent }};margin-top:16px">Earned</div>
+            </sc-if>
+            <div style="font:italic 300 28px/1.35 Newsreader;color:{{ t.dim }};margin-top:14px;max-width:190px">{{ t.line }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ DIRECTION 3 · MOON ============ -->
+  <div>
+    <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:hsl(32,10%,64%)">D3 · Moon — one disc waxing through the week</div>
+    <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);margin-top:8px;max-width:1000px">The calmest of the set: a single disc fills in tenths, with ten hairline ticks beneath for the countable version of the same truth. Full moon = treat night.</div>
+    <div style="display:grid;grid-template-columns:repeat(4,600px);gap:20px;margin-top:22px">
+      <sc-for list="{{ moon }}" as="t" hint-placeholder-count="8">
+        <div style="width:600px;height:300px;background:{{ t.panel }};position:relative;overflow:hidden;display:flex;align-items:center;gap:44px;padding:0 48px;box-sizing:border-box">
+          <div style="position:relative;width:168px;height:168px;border-radius:50%;background:{{ t.quiet }};overflow:hidden;flex:none;box-shadow:{{ t.discGlow }}">
+            <div style="position:absolute;left:0;right:0;bottom:0;height:{{ t.pct }}%;background:hsl(44,74%,56%)"></div>
+          </div>
+          <div style="flex:1">
+            <div style="display:flex;align-items:center;gap:16px">
+              <span style="font-size:44px;line-height:1;opacity:{{ t.rewardOpacity }}">{{ t.reward }}</span>
+              <sc-if value="{{ t.full }}" hint-placeholder-val="{{ false }}">
+                <span style="font:600 26px/1 'Instrument Sans';letter-spacing:0.2em;text-transform:uppercase;color:{{ t.accent }}">Earned</span>
+              </sc-if>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:26px">
+              <sc-for list="{{ t.ticks }}" as="k" hint-placeholder-count="10">
+                <span style="width:4px;height:30px;background:{{ k.c }}"></span>
+              </sc-for>
+            </div>
+            <div style="font:400 28px/1 Newsreader;color:{{ t.dim }};margin-top:18px;font-variant-numeric:tabular-nums">{{ t.count }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ DIRECTION 4 · PATH ============ -->
+  <div>
+    <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:hsl(32,10%,64%)">D4 · Path — stepping stones to the treat</div>
+    <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);margin-top:8px;max-width:1000px">Ten stones on a gentle rise, the reward waiting on a small plate at the end. The most narrative option for a five-year-old: you can see exactly how far along the walk you are.</div>
+    <div style="display:grid;grid-template-columns:repeat(4,600px);gap:20px;margin-top:22px">
+      <sc-for list="{{ path }}" as="t" hint-placeholder-count="8">
+        <div style="width:600px;height:300px;background:{{ t.panel }};position:relative;overflow:hidden">
+          <div style="position:absolute;left:44px;top:70px;width:440px;height:150px">
+            <sc-for list="{{ t.stones }}" as="s" hint-placeholder-count="10">
+              <div style="position:absolute;left:{{ s.left }}px;top:{{ s.top }}px;width:{{ s.size }}px;height:{{ s.size }}px;margin-left:{{ s.off }}px;margin-top:{{ s.off }}px;border-radius:50%;background:{{ s.bg }};color:{{ s.fg }};font:400 {{ s.size }}px/1 Newsreader;text-align:center;text-shadow:{{ s.glow }}">{{ s.glyph }}</div>
+            </sc-for>
+          </div>
+          <div style="position:absolute;right:36px;top:96px;display:flex;flex-direction:column;align-items:center;gap:12px">
+            <span style="font-size:48px;line-height:1;opacity:{{ t.rewardOpacity }}">{{ t.reward }}</span>
+            <div style="width:76px;height:1px;background:{{ t.stroke }}"></div>
+          </div>
+          <div style="position:absolute;left:44px;bottom:26px;font:400 28px/1 Newsreader;color:{{ t.dim }};font-variant-numeric:tabular-nums">{{ t.count }}</div>
+          <sc-if value="{{ t.full }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;right:36px;bottom:26px;font:600 26px/1 'Instrument Sans';letter-spacing:0.2em;text-transform:uppercase;color:{{ t.accent }}">Earned</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ REFINEMENTS ============ -->
+  <div>
+    <div style="font:600 14px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(44,74%,56%)">Round two</div>
+    <div style="font:400 44px/1.15 Newsreader;color:hsl(36,28%,91%);margin-top:12px">Refining the constellation and the vessel</div>
+    <div style="font:400 17px/1.5 'Instrument Sans';color:hsl(32,10%,64%);margin-top:10px;max-width:1000px">The two that stayed elegant when still. Both now sit in a hairline-framed pane sized for the 620px column, with the reward set as a small foil disc and a Newsreader tally the adults can read at a glance. Shown at seven and earned, day and evening.</div>
+    <div style="height:1px;background:hsl(30,10%,22%);margin-top:24px"></div>
+  </div>
+
+  <div>
+    <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:hsl(32,10%,64%);margin-bottom:22px">R1 · Constellation pane — framed, vignetted, foil reward</div>
+    <div style="display:grid;grid-template-columns:repeat(4,620px);gap:20px">
+      <sc-for list="{{ r1 }}" as="t" hint-placeholder-count="4">
+        <div style="width:620px;height:340px;background:{{ t.panel }};padding:34px;box-sizing:border-box">
+          <div style="position:relative;width:100%;height:100%;border:1px solid {{ t.frame }};background:{{ t.vignette }};box-sizing:border-box">
+            <div style="position:absolute;left:30px;top:34px;width:492px;height:150px">
+              <sc-for list="{{ t.lines }}" as="l" hint-placeholder-count="9">
+                <div style="position:absolute;left:{{ l.x }}px;top:{{ l.y }}px;width:{{ l.w }}px;height:1px;background:{{ l.c }};transform:rotate({{ l.a }}deg);transform-origin:0 50%"></div>
+              </sc-for>
+              <sc-for list="{{ t.nodes }}" as="n" hint-placeholder-count="10">
+                <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+              </sc-for>
+            </div>
+            <div style="position:absolute;left:30px;right:26px;bottom:22px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px">
+              <div>
+                <sc-if value="{{ t.full }}" hint-placeholder-val="{{ false }}">
+                  <div style="font:600 26px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:{{ t.accent }};margin-bottom:10px">Movie night</div>
+                </sc-if>
+                <div style="display:flex;align-items:baseline;gap:12px">
+                  <span style="font:400 44px/1 Newsreader;color:{{ t.ink }};font-variant-numeric:tabular-nums">{{ t.n }}</span>
+                  <span style="font:300 28px/1 Newsreader;color:{{ t.dim }}">of 10 stars</span>
+                </div>
+              </div>
+              <span style="width:78px;height:78px;border-radius:50%;border:1px solid {{ t.foilRing }};background:{{ t.foilFill }};display:flex;align-items:center;justify-content:center;font-size:40px;line-height:1;box-shadow:{{ t.foilGlow }};flex:none">{{ t.reward }}</span>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div>
+    <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:hsl(32,10%,64%);margin-bottom:22px">R2 · Vessel pane — gold settling, engraved plate</div>
+    <div style="display:grid;grid-template-columns:repeat(4,620px);gap:20px">
+      <sc-for list="{{ r2 }}" as="t" hint-placeholder-count="4">
+        <div style="width:620px;height:340px;background:{{ t.panel }};padding:34px;box-sizing:border-box">
+          <div style="position:relative;width:100%;height:100%;border:1px solid {{ t.frame }};box-sizing:border-box;display:flex;align-items:center;gap:38px;padding:0 34px">
+            <div style="position:relative;width:196px;height:212px;border:1px solid {{ t.stroke }};border-radius:10px 10px 44px 44px;flex:none">
+              <div style="position:absolute;left:60px;right:60px;top:-13px;height:12px;border:1px solid {{ t.stroke }};border-bottom:none;border-radius:4px 4px 0 0"></div>
+              <div style="position:absolute;left:1px;right:1px;bottom:1px;height:{{ t.fill }}%;background:{{ t.fillColor }};border-radius:0 0 43px 43px"></div>
+              <sc-for list="{{ t.slots }}" as="s" hint-placeholder-count="10">
+                <div style="position:absolute;left:{{ s.left }}%;top:{{ s.top }}%;width:{{ s.size }}px;height:{{ s.size }}px;margin-left:{{ s.off }}px;margin-top:{{ s.off }}px;border-radius:50%;background:{{ s.bg }};color:{{ s.fg }};font:400 {{ s.size }}px/1 Newsreader;text-align:center;text-shadow:{{ s.glow }}">{{ s.glyph }}</div>
+              </sc-for>
+            </div>
+            <div>
+              <div style="display:flex;align-items:baseline;gap:12px">
+                <span style="font:400 60px/1 Newsreader;color:{{ t.ink }};font-variant-numeric:tabular-nums">{{ t.n }}</span>
+                <span style="font:300 30px/1 Newsreader;color:{{ t.dim }}">of 10</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:16px;margin-top:24px">
+                <span style="width:74px;height:74px;border-radius:50%;border:1px solid {{ t.foilRing }};background:{{ t.foilFill }};display:flex;align-items:center;justify-content:center;font-size:38px;line-height:1;box-shadow:{{ t.foilGlow }}">{{ t.reward }}</span>
+                <span style="font:italic 300 30px/1.3 Newsreader;color:{{ t.dim }};max-width:170px">{{ t.line }}</span>
+              </div>
+              <sc-if value="{{ t.full }}" hint-placeholder-val="{{ false }}">
+                <div style="font:600 26px/1 'Instrument Sans';letter-spacing:0.18em;text-transform:uppercase;color:{{ t.accent }};margin-top:22px">Earned</div>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ ROUND THREE · PATH REFINEMENTS ============ -->
+  <div>
+    <div style="font:600 14px/1 'Instrument Sans';letter-spacing:0.3em;text-transform:uppercase;color:hsl(44,74%,56%)">Round three · chosen direction</div>
+    <div style="font:400 44px/1.15 Newsreader;color:hsl(36,28%,91%);margin-top:12px">The path, graphic only</div>
+    <div style="font:400 17px/1.5 'Instrument Sans';color:hsl(32,10%,64%);margin-top:10px;max-width:1000px">No numerals, no labels, no “earned” copy — the drawing carries all four states. The walked trail is gold, the road ahead is a whisper, and the treat waits on a foil disc that lights only when the walk is finished. Two temperaments: a meander and a climb.</div>
+    <div style="height:1px;background:hsl(30,10%,22%);margin-top:24px"></div>
+  </div>
+
+  <div>
+    <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:hsl(32,10%,64%);margin-bottom:8px">R3 · Meander — the week wanders toward the treat</div>
+    <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);max-width:1000px;margin-bottom:22px">Playful without being cartoonish: the trail dips and rises, so the stars sit at different heights and the shape is different every week's-worth of the way through.</div>
+    <div style="display:grid;grid-template-columns:repeat(4,620px);gap:20px">
+      <sc-for list="{{ pathA }}" as="t" hint-placeholder-count="8">
+        <div style="width:620px;height:340px;background:{{ t.panel }};padding:34px;box-sizing:border-box">
+          <div style="position:relative;width:100%;height:100%;border:1px solid {{ t.frame }};background:{{ t.vignette }};box-sizing:border-box;overflow:hidden">
+            <div style="position:absolute;left:34px;top:56px;width:400px;height:150px">
+              <sc-for list="{{ t.lines }}" as="l" hint-placeholder-count="9">
+                <div style="position:absolute;left:{{ l.x }}px;top:{{ l.y }}px;width:{{ l.w }}px;height:{{ l.h }}px;background:{{ l.c }};transform:rotate({{ l.a }}deg);transform-origin:0 50%"></div>
+              </sc-for>
+              <sc-for list="{{ t.nodes }}" as="n" hint-placeholder-count="10">
+                <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+              </sc-for>
+            </div>
+            <div style="position:absolute;right:34px;top:50%;transform:translateY(-50%);width:96px;height:96px;border-radius:50%;border:1px solid {{ t.foilRing }};background:{{ t.foilFill }};display:flex;align-items:center;justify-content:center;font-size:46px;line-height:1;box-shadow:{{ t.foilGlow }}">{{ t.reward }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div>
+    <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:hsl(32,10%,64%);margin-bottom:8px">R4 · Climb — a steady ascent to the summit</div>
+    <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);max-width:1000px;margin-bottom:22px">The calmer sibling: the trail only ever rises, so progress reads as height. A single horizon hairline grounds it and makes the pane feel like a landscape print rather than a chart.</div>
+    <div style="display:grid;grid-template-columns:repeat(4,620px);gap:20px">
+      <sc-for list="{{ pathB }}" as="t" hint-placeholder-count="8">
+        <div style="width:620px;height:340px;background:{{ t.panel }};padding:34px;box-sizing:border-box">
+          <div style="position:relative;width:100%;height:100%;border:1px solid {{ t.frame }};background:{{ t.vignette }};box-sizing:border-box;overflow:hidden">
+            <div style="position:absolute;left:0;right:0;bottom:44px;height:1px;background:{{ t.hair }}"></div>
+            <div style="position:absolute;left:34px;top:44px;width:392px;height:168px">
+              <sc-for list="{{ t.lines }}" as="l" hint-placeholder-count="9">
+                <div style="position:absolute;left:{{ l.x }}px;top:{{ l.y }}px;width:{{ l.w }}px;height:{{ l.h }}px;background:{{ l.c }};transform:rotate({{ l.a }}deg);transform-origin:0 50%"></div>
+              </sc-for>
+              <sc-for list="{{ t.nodes }}" as="n" hint-placeholder-count="10">
+                <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+              </sc-for>
+            </div>
+            <div style="position:absolute;right:30px;top:26px;width:96px;height:96px;border-radius:50%;border:1px solid {{ t.foilRing }};background:{{ t.foilFill }};display:flex;align-items:center;justify-content:center;font-size:46px;line-height:1;box-shadow:{{ t.foilGlow }}">{{ t.reward }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div>
+    <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:hsl(32,10%,64%);margin-bottom:8px">R3 in the 620px column — day and evening, seven of ten</div>
+    <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);max-width:1000px;margin-bottom:22px">At real size beneath the schedule. The pane runs 250px tall; the trail field is 400×110 and the foil disc 86px, so the reward stays a clear silhouette from ten feet with no type at all.</div>
+    <div style="display:flex;gap:28px">
+      <sc-for list="{{ contextPath }}" as="c" hint-placeholder-count="2">
+        <div style="width:620px;background:{{ c.panel }};padding:44px 48px;box-sizing:border-box">
+          <div style="font:600 26px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:{{ c.dim }}">{{ c.heading }}</div>
+          <sc-for list="{{ c.rows }}" as="r" hint-placeholder-count="4">
+            <div style="display:flex;align-items:baseline;gap:13px;padding:14px 0;border-bottom:1px solid {{ c.hair }}">
+              <span style="width:10px;height:10px;border-radius:50%;background:{{ r.color }};flex:none;transform:translateY(-2px)"></span>
+              <span style="font:400 32px/1.25 Newsreader;color:{{ c.ink }}">{{ r.title }} <span style="font:400 26px/1 'Instrument Sans';color:{{ c.dim }}">{{ r.meta }}</span></span>
+            </div>
+          </sc-for>
+          <div style="font:600 26px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:{{ c.dim }};margin-top:30px">Alex's stars</div>
+          <div style="position:relative;height:250px;border:1px solid {{ c.frame }};background:{{ c.vignette }};margin-top:18px;overflow:hidden">
+            <div style="position:absolute;left:26px;top:64px;width:340px;height:110px">
+              <sc-for list="{{ c.lines }}" as="l" hint-placeholder-count="9">
+                <div style="position:absolute;left:{{ l.x }}px;top:{{ l.y }}px;width:{{ l.w }}px;height:{{ l.h }}px;background:{{ l.c }};transform:rotate({{ l.a }}deg);transform-origin:0 50%"></div>
+              </sc-for>
+              <sc-for list="{{ c.nodes }}" as="n" hint-placeholder-count="10">
+                <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+              </sc-for>
+            </div>
+            <div style="position:absolute;right:26px;top:50%;transform:translateY(-50%);width:86px;height:86px;border-radius:50%;border:1px solid {{ c.foilRing }};background:{{ c.foilFill }};display:flex;align-items:center;justify-content:center;font-size:42px;line-height:1;box-shadow:{{ c.foilGlow }}">{{ c.reward }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ IN CONTEXT ============ -->
+  <div>
+    <div style="font:600 15px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:hsl(32,10%,64%);margin-bottom:8px">In context — the 620px side panel of 13A (day) and 13B (evening)</div>
+    <div style="font:400 16px/1.5 'Instrument Sans';color:hsl(30,8%,52%);max-width:1000px;margin-bottom:22px">R1 dropped in beneath the schedule, at real size. The pane's hairline frame does the separating, so no extra divider is needed.</div>
+    <div style="display:flex;gap:28px">
+      <sc-for list="{{ context }}" as="c" hint-placeholder-count="2">
+        <div style="width:620px;background:{{ c.panel }};padding:44px 48px;box-sizing:border-box;display:flex;flex-direction:column;gap:0">
+          <div style="font:600 26px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:{{ c.dim }}">{{ c.heading }}</div>
+          <sc-for list="{{ c.rows }}" as="r" hint-placeholder-count="4">
+            <div style="display:flex;align-items:baseline;gap:13px;padding:14px 0;border-bottom:1px solid {{ c.hair }}">
+              <span style="width:10px;height:10px;border-radius:50%;background:{{ r.color }};flex:none;transform:translateY(-2px)"></span>
+              <span style="font:400 32px/1.25 Newsreader;color:{{ c.ink }}">{{ r.title }} <span style="font:400 26px/1 'Instrument Sans';color:{{ c.dim }}">{{ r.meta }}</span></span>
+            </div>
+          </sc-for>
+          <div style="font:600 26px/1 'Instrument Sans';letter-spacing:0.24em;text-transform:uppercase;color:{{ c.dim }};margin-top:30px">Alex's stars</div>
+          <div style="position:relative;height:250px;border:1px solid {{ c.frame }};background:{{ c.vignette }};margin-top:18px">
+            <div style="position:absolute;left:26px;top:30px;width:472px;height:118px">
+              <sc-for list="{{ c.lines }}" as="l" hint-placeholder-count="9">
+                <div style="position:absolute;left:{{ l.x }}px;top:{{ l.y }}px;width:{{ l.w }}px;height:1px;background:{{ l.c }};transform:rotate({{ l.a }}deg);transform-origin:0 50%"></div>
+              </sc-for>
+              <sc-for list="{{ c.nodes }}" as="n" hint-placeholder-count="10">
+                <div style="position:absolute;left:{{ n.left }}px;top:{{ n.top }}px;width:{{ n.size }}px;height:{{ n.size }}px;margin-left:{{ n.off }}px;margin-top:{{ n.off }}px;border-radius:50%;background:{{ n.bg }};color:{{ n.fg }};font:400 {{ n.size }}px/1 Newsreader;text-align:center;text-shadow:{{ n.glow }}">{{ n.glyph }}</div>
+              </sc-for>
+            </div>
+            <div style="position:absolute;left:26px;bottom:22px;display:flex;align-items:baseline;gap:11px">
+              <span style="font:400 40px/1 Newsreader;color:{{ c.ink }};font-variant-numeric:tabular-nums">{{ c.n }}</span>
+              <span style="font:300 28px/1 Newsreader;color:{{ c.dim }}">of 10 stars</span>
+            </div>
+            <div style="position:absolute;right:24px;bottom:20px;width:74px;height:74px;border-radius:50%;border:1px solid {{ c.foilRing }};background:{{ c.foilFill }};display:flex;align-items:center;justify-content:center;font-size:38px;line-height:1">🎬</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ SPEC ============ -->
+  <div style="max-width:1180px;display:flex;flex-direction:column;gap:60px;font:400 17px/1.65 'Instrument Sans';color:hsl(36,20%,82%)">
+    <div>
+      <div style="font:400 40px/1.2 Newsreader;color:hsl(36,28%,91%);border-bottom:1px solid hsl(30,10%,20%);padding-bottom:16px;margin-bottom:24px">Portable spec</div>
+      <p style="margin:0 0 14px;text-wrap:pretty">Recommendation: <span style="color:hsl(36,28%,91%)">R1, the constellation pane</span>. It is the only option that is genuinely beautiful at zero stars — an empty night sky, not an empty container — and the completing shape gives a five-year-old something to watch grow without a single bar or percentage. R2 is the warmer, more literal fallback if the family wants the tally countable at a distance.</p>
+      <pre style="margin:0;background:hsl(26,12%,8%);border:1px solid hsl(30,10%,18%);padding:26px 30px;font:400 15px/1.7 ui-monospace,monospace;color:hsl(36,20%,82%);overflow-x:auto">@theme {
+  /* day — oat &amp; moss */
+  --color-surface:     hsl(38 30% 91%);
+  --color-panel:       hsl(42 46% 96%);
+  --color-ink:         hsl(28 30% 18%);
+  --color-ink-dim:     hsl(30 14% 38%);
+  --color-line:        hsl(34 24% 86%);
+  --color-accent:      hsl(140 32% 30%);
+  --color-star-quiet:  hsl(34 20% 82%);   /* unearned node */
+  --color-pane-frame:  hsl(34 24% 84%);
+
+  /* evening — walnut */
+  --color-surface-eve:    hsl(26 22% 13%);
+  --color-panel-eve:      hsl(26 18% 17%);
+  --color-ink-eve:        hsl(40 30% 93%);
+  --color-ink-dim-eve:    hsl(36 14% 70%);
+  --color-line-eve:       hsl(30 12% 26%);
+  --color-accent-eve:     hsl(110 26% 62%);
+  --color-star-quiet-eve: hsl(30 12% 30%);
+  --color-pane-frame-eve: hsl(30 12% 26%);
+
+  /* shared */
+  --color-star:       hsl(44 74% 56%);
+  --color-star-line:  hsl(44 74% 56% / 0.45);
+}</pre>
+    </div>
+    <div>
+      <div style="font:400 34px/1.2 Newsreader;color:hsl(36,28%,91%);border-bottom:1px solid hsl(30,10%,20%);padding-bottom:14px;margin-bottom:22px">R1 geometry</div>
+      <div style="display:grid;grid-template-columns:250px 1fr;gap:10px 30px">
+        <div style="color:hsl(36,28%,91%)">Pane</div><div>620 × 340 outer; 34px padding; inner pane 1px <span style="color:hsl(36,28%,91%)">pane-frame</span>, no radius, no shadow. Vignette: <code style="font:400 15px ui-monospace">radial-gradient(120% 120% at 50% 0%, rgb(0 0 0/0.05), transparent 70%)</code> in day; the same in white at 4% for evening.</div>
+        <div style="color:hsl(36,28%,91%)">Star field</div><div>492 × 150 area, inset 30px left / 34px top. Ten fixed points at % of that box: (6,62) (16,34) (27,58) (38,28) (47,66) (57,38) (66,70) (76,32) (86,56) (95,24).</div>
+        <div style="color:hsl(36,28%,91%)">Earned star</div><div>★ glyph, Newsreader 400, 34px, color <span style="color:hsl(36,28%,91%)">star</span>, centered on its point (translate −50%), <code style="font:400 15px ui-monospace">text-shadow: 0 0 18px hsl(44 74% 56% / 0.5)</code>.</div>
+        <div style="color:hsl(36,28%,91%)">Unearned point</div><div>10px circle, <span style="color:hsl(36,28%,91%)">star-quiet</span>, no glyph, no border.</div>
+        <div style="color:hsl(36,28%,91%)">Hairlines</div><div>1px div per consecutive pair, <code style="font:400 15px ui-monospace">transform-origin: 0 50%</code>, rotated to the angle between points. Drawn in <span style="color:hsl(36,28%,91%)">star-line</span> when both ends are earned, otherwise <span style="color:hsl(36,28%,91%)">line</span>.</div>
+        <div style="color:hsl(36,28%,91%)">Tally</div><div>Bottom-left, 30px inset: count in Newsreader 400 / 44px <span style="color:hsl(36,28%,91%)">ink</span>, tabular-nums; “of 10 stars” Newsreader 300 / 28px <span style="color:hsl(36,28%,91%)">ink-dim</span>.</div>
+        <div style="color:hsl(36,28%,91%)">Reward foil</div><div>78px circle, 1px ring, fill = 6% ink (day) / 8% cream (evening), emoji at 40px. On full: ring becomes <span style="color:hsl(36,28%,91%)">star</span>, fill 12% gold, <code style="font:400 15px ui-monospace">box-shadow: 0 0 30px hsl(44 74% 56% / 0.35)</code>, and the reward name sets to its left in Instrument Sans 600 / 26px / .18em caps, <span style="color:hsl(36,28%,91%)">accent</span>.</div>
+        <div style="color:hsl(36,28%,91%)">Column fit</div><div>In the 620px panel the pane is 250px tall (star field 472 × 118, foil 74px, tally 40px) — see the in-context panels above. Nothing below 26px in any state.</div>
+        <div style="color:hsl(36,28%,91%)">Idle polish</div><div>Optional: the most recently earned star pulses its glow between 0.35 and 0.6 opacity over 6s, <code style="font:400 15px ui-monospace">ease-in-out</code>, infinite alternate. Meaning never depends on it.</div>
+      </div>
+    </div>
+    <div>
+      <div style="font:400 34px/1.2 Newsreader;color:hsl(36,28%,91%);border-bottom:1px solid hsl(30,10%,20%);padding-bottom:14px;margin-bottom:22px">Contrast</div>
+      <p style="margin:0;text-wrap:pretty">Gold on panel: 2.4:1 day / 6.1:1 evening — used only as a 34px glyph and never as text, so it clears the 3:1 graphical floor in evening and is carried in day by the ★ shape plus the Newsreader tally, which runs <span style="color:hsl(36,28%,91%)">ink</span> on <span style="color:hsl(36,28%,91%)">panel</span> at ≈ 12:1. Dim ink is 6.2:1 day / 6.6:1 evening. Accent (moss) is 6.8:1 day / 7.1:1 evening. Unearned points sit at ≈ 1.2:1 on purpose — they are a whisper, and the count is always stated in type.</p>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;2780px&quot;},&quot;goal&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:10,&quot;min&quot;:5,&quot;max&quot;:14,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Star bank&quot;},&quot;reward&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;🎬&quot;,&quot;options&quot;:[&quot;🎬&quot;,&quot;🏊&quot;,&quot;🦁&quot;,&quot;⛺&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Star bank&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const GOLD = 'hsl(44,74%,56%)';
+    const GLINE = 'hsl(44,74%,56%,0.45)';
+    const T = {
+      day: { panel:'hsl(42,46%,96%)', ink:'hsl(28,30%,18%)', dim:'hsl(30,14%,38%)', hair:'hsl(34,24%,86%)',
+             accent:'hsl(140,32%,30%)', quiet:'hsl(34,20%,82%)', stroke:'hsl(32,20%,78%)', frame:'hsl(34,24%,84%)',
+             vignette:'radial-gradient(120% 120% at 50% 0%, rgb(0 0 0 / 0.05), transparent 70%)',
+             foilFill:'hsl(28,30%,18%,0.06)', foilRing:'hsl(32,20%,76%)' },
+      eve: { panel:'hsl(26,18%,17%)', ink:'hsl(40,30%,93%)', dim:'hsl(36,14%,70%)', hair:'hsl(30,12%,26%)',
+             accent:'hsl(110,26%,62%)', quiet:'hsl(30,12%,30%)', stroke:'hsl(30,12%,32%)', frame:'hsl(30,12%,26%)',
+             vignette:'radial-gradient(120% 120% at 50% 0%, rgb(255 255 255 / 0.04), transparent 70%)',
+             foilFill:'hsl(40,30%,93%,0.08)', foilRing:'hsl(30,12%,34%)' }
+    };
+    const STATES = [0, 3, 7, 10];
+    const CN = [[6,62],[16,34],[27,58],[38,28],[47,66],[57,38],[66,70],[76,32],[86,56],[95,24]];
+    const JAR = [[22,87],[52,89],[80,85],[30,68],[58,70],[82,65],[36,49],[64,50],[46,30],[74,31]];
+
+    const node = (t, on, size) => on
+      ? { size, off:-size/2, bg:'transparent', fg:GOLD, glyph:'★', glow:'0 0 18px hsl(44 74% 56% / 0.5)' }
+      : { size:10, off:-5, bg:t.quiet, fg:'transparent', glyph:'', glow:'none' };
+
+    const field = (t, n, w, h) => {
+      const pts = CN.map(([px,py]) => ({ x:px/100*w, y:py/100*h }));
+      const nodes = pts.map((p,i) => ({ left:p.x, top:p.y, ...node(t, i<n, 34) }));
+      const lines = [];
+      for (let i=0;i<9;i++) {
+        const a=pts[i], b=pts[i+1], dx=b.x-a.x, dy=b.y-a.y;
+        lines.push({ x:a.x, y:a.y, w:Math.hypot(dx,dy), a:Math.atan2(dy,dx)*180/Math.PI, c: i+1<n ? GLINE : t.hair });
+      }
+      return { nodes, lines };
+    };
+
+    const foil = (t, full) => full
+      ? { foilRing:GOLD, foilFill:'hsl(44,74%,56%,0.12)', foilGlow:'0 0 30px hsl(44 74% 56% / 0.35)' }
+      : { foilRing:t.foilRing, foilFill:t.foilFill, foilGlow:'none' };
+
+    const each = fn => { const out=[]; ['day','eve'].forEach(k => STATES.forEach(n => out.push(fn(T[k], n, k)))); return out; };
+    const base = (t,n) => ({ ...t, n, full:n===10, count:n + ' of 10', reward:'🎬',
+      rewardOpacity: n===10 ? 1 : (n===0 ? 0.4 : 0.7),
+      line: n===10 ? 'Movie night tonight.' : (n===0 ? 'A fresh week.' : (10-n) + ' more to movie night.') });
+
+    const constellation = each((t,n) => ({ ...base(t,n), ...field(t,n,520,200) }));
+
+    const vessel = each((t,n) => ({ ...base(t,n), reward:'🎬',
+      slots: JAR.map(([px,py],i) => ({ left:px, top:py, ...node(t, i<n, 30) })) }));
+
+    const moon = each((t,n) => ({ ...base(t,n), reward:'🏊', pct:n*10,
+      discGlow: n===10 ? '0 0 44px hsl(44 74% 56% / 0.35)' : 'none',
+      ticks: Array.from({length:10},(_,i) => ({ c: i<n ? GOLD : t.quiet })) }));
+
+    const PP = Array.from({length:10},(_,i) => [4+i*10.3, 50+30*Math.sin(i*0.8)]);
+    const path = each((t,n) => ({ ...base(t,n), reward:'⛺',
+      stones: PP.map(([px,py],i) => ({ left:px/100*440, top:py/100*150, ...node(t, i<n, 32) })) }));
+
+    // graphic-only trail: gold where walked, whisper ahead; 2px walked line, 1px ahead
+    const trail = (t, n, pts, w, h) => {
+      const p = pts.map(([px,py]) => ({ x:px/100*w, y:py/100*h }));
+      const nodes = p.map((q,i) => ({ left:q.x, top:q.y, ...node(t, i<n, 32) }));
+      const lines = [];
+      for (let i=0;i<9;i++) {
+        const a=p[i], b=p[i+1], dx=b.x-a.x, dy=b.y-a.y, walked = i+1 < n;
+        lines.push({ x:a.x, y:a.y, w:Math.hypot(dx,dy), h: walked ? 2 : 1,
+          a:Math.atan2(dy,dx)*180/Math.PI, c: walked ? GLINE : t.hair });
+      }
+      return { nodes, lines };
+    };
+    const foilG = (t, full) => full
+      ? { foilRing:GOLD, foilFill:'hsl(44,74%,56%,0.14)', foilGlow:'0 0 34px hsl(44 74% 56% / 0.38), 0 0 0 10px hsl(44 74% 56% / 0.09)' }
+      : { foilRing:t.foilRing, foilFill:t.foilFill, foilGlow:'none' };
+    const MEANDER = Array.from({length:10},(_,i) => [3+i*9.6, 50+30*Math.sin(i*0.82)]);
+    const CLIMB = Array.from({length:10},(_,i) => [3+i*9.8, 86 - i*8.2 + 4*Math.sin(i*1.7)]);
+    const pathA = each((t,n) => ({ ...t, reward:'🎬', ...trail(t,n,MEANDER,400,150), ...foilG(t,n===10) }));
+    const pathB = each((t,n) => ({ ...t, reward:'⛺', ...trail(t,n,CLIMB,392,168), ...foilG(t,n===10) }));
+
+    const pair = fn => { const out=[]; ['day','eve'].forEach(k => [7,10].forEach(n => out.push(fn(T[k], n)))); return out; };
+    const r1 = pair((t,n) => ({ ...base(t,n), ...field(t,n,492,150), ...foil(t,n===10) }));
+    const r2 = pair((t,n) => ({ ...base(t,n), ...foil(t,n===10), fill:n*10,
+      fillColor: n===10 ? 'hsl(44,74%,56%,0.22)' : 'hsl(44,74%,56%,0.14)',
+      slots: JAR.map(([px,py],i) => ({ left:px, top:py, ...node(t, i<n, 28) })) }));
+
+    const rows = [
+      { title:'School drop-off', meta:'8:15 AM', color:'hsl(24,42%,40%)' },
+      { title:'Soccer practice', meta:'10:30 AM · Field 3', color:'hsl(14,52%,46%)' },
+      { title:'Piano lesson', meta:'4:00 PM · Meera', color:'hsl(168,26%,34%)' },
+      { title:'Dinner at home', meta:'6:30 PM', color:'hsl(122,28%,34%)' }
+    ];
+    const rowsEve = rows.map(r => ({ ...r, color: { 'hsl(24,42%,40%)':'hsl(24,40%,64%)', 'hsl(14,52%,46%)':'hsl(14,48%,66%)', 'hsl(168,26%,34%)':'hsl(168,24%,60%)', 'hsl(122,28%,34%)':'hsl(122,24%,62%)' }[r.color] }));
+    const context = [
+      { ...T.day, heading:'Today', rows, n:7, ...field(T.day,7,472,118), ...foil(T.day,false) },
+      { ...T.eve, heading:'Tonight', rows:rowsEve, n:9, ...field(T.eve,9,472,118), ...foil(T.eve,false) }
+    ];
+
+    // D5 — locked treatment: stones only, no count, no labels
+    const STONES = Array.from({length:10},(_,i) => [3+i*10.3, 50+30*Math.sin(i*0.8)]);
+    const stones = (t, n, w, h) => ({
+      nodes: STONES.map(([px,py],i) => ({ left:px/100*w, top:py/100*h, ...node(t, i<n, 32) })),
+      rewardOpacity: n===10 ? 1 : (n===0 ? 0.4 : 0.7),
+      rewardGlow: n===10 ? '0 0 30px hsl(44 74% 56% / 0.45)' : 'none',
+      plate: n===10 ? GOLD : t.stroke,
+      plateH: n===10 ? 2 : 1
+    });
+    const locked = each((t,n) => ({ ...t, reward:'🎬', ...stones(t,n,400,132) }));
+    const lockedContext = [
+      { ...T.day, heading:'Today', rows, reward:'🎬', ...stones(T.day,7,376,132) },
+      { ...T.eve, heading:'Tonight', rows:rowsEve, reward:'🎬', ...stones(T.eve,10,376,132) }
+    ];
+    const contextPath = [
+      { ...T.day, heading:'Today', rows, reward:'🎬', ...trail(T.day,7,MEANDER,340,110), ...foilG(T.day,false) },
+      { ...T.eve, heading:'Tonight', rows:rowsEve, reward:'🎬', ...trail(T.eve,9,MEANDER,340,110), ...foilG(T.eve,false) }
+    ];
+    return { locked, lockedContext, constellation, vessel, moon, path, r1, r2, pathA, pathB, contextPath, context };
+  }
+}
+</script>
+</body>
+</html>
