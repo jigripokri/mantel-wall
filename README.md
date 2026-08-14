@@ -9,7 +9,7 @@ screen that shows what's happening today — and gets out of the way.
 
 </div>
 
-![The wall at dusk — clock, tonight's events, chores, and a week of stars, over a full-bleed photo](docs/screenshots/wall-side-veil.jpg)
+![The wall at dusk — clock, tonight's events, chores and a week of stars, over a full-bleed photo of two children running on a beach at sunset](docs/screenshots/wall-side-veil.jpg)
 
 <div align="center">
 
@@ -85,11 +85,11 @@ home screen and it behaves like an app.
 
 ## Your photos, behind everything
 
-![The same wall at dusk — two children silhouetted on a beach at sunset, the column of type still fully legible over it](docs/screenshots/wall-side-veil-dusk.jpg)
+![The same wall on a bright garden photo, the column of type still fully legible over it](docs/screenshots/wall-side-veil-garden.jpg)
 
 The same wall, a different evening. Photos uploaded from a phone rotate behind
 the type on a slow Ken Burns drift, and the veil is angled so it holds the
-column's contrast against a dark photo as readily as a bright one.
+column's contrast against a bright, busy photo as readily as the dark one above.
 
 They live in your own Supabase Storage bucket and are served through signed
 URLs — never public, never on anyone else's CDN.

@@ -45,13 +45,16 @@ const WHEN = new Date("2026-08-13T18:12:00-07:00"); // a summer evening
 const SHOTS = [
   // The wall, 16:9. The stage is fixed at 1920×1080 and scales to fit, so 1600
   // wide is the same composition at a third of the file size.
-  { file: "wall-side-veil.jpg", photos: ["garden.jpg"], w: 1600, h: 900, type: "jpeg" },
+  // The beach shot is THE Side veil image: the veil melts into the dark wet sand
+  // and the column has more contrast against it than against anything else, so
+  // it leads the README and every share asset.
+  { file: "wall-side-veil.jpg", photos: ["beach.jpg"], w: 1600, h: 900, type: "jpeg" },
   {
     // The tenth star. Boot one short of the goal, then cross it live — the burst
     // deliberately does NOT fire on a wall that merely booted into a full row,
     // so the threshold has to be crossed while the page is watching.
     file: "wall-celebration.jpg",
-    photos: ["garden.jpg"],
+    photos: ["beach.jpg"],
     w: 1600,
     h: 900,
     stars: 9,
@@ -60,9 +63,9 @@ const SHOTS = [
   },
   { file: "phone.png", photos: ["garden.jpg"], route: "/", w: 430, h: 846 },
   // The same wall on a different photo — what the rotation actually looks like,
-  // and proof the veil holds its contrast against a dark image as well as a
-  // bright one.
-  { file: "wall-side-veil-dusk.jpg", photos: ["beach.jpg"], w: 1600, h: 900, type: "jpeg" },
+  // and proof the veil holds its contrast against a bright, busy image as well
+  // as a dark one.
+  { file: "wall-side-veil-garden.jpg", photos: ["garden.jpg"], w: 1600, h: 900, type: "jpeg" },
   // Oat & moss hangs its photo in a frame — a CENTRE crop — while the veil
   // photos are composed with their subject far right, so the mount clips the
   // family out of its own picture. Verified against two different images: it is
