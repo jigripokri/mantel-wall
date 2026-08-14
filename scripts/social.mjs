@@ -28,8 +28,21 @@ const FRAMES = [
   ["c5", "carousel-5.jpg"],
 ];
 
+/**
+ * 2× device pixels. The frames stay at their platform-native CSS sizes (LinkedIn
+ * 1200×627, square 1080, OG 1280×640) and come out at twice that in pixels,
+ * which is what keeps the type crisp after LinkedIn re-encodes them. The
+ * embedded wall screenshots are 1600px wide and never displayed wider than
+ * ~930 CSS px, so they are still downsampling even at 2× — the photo does not
+ * get softer, only the text gets sharper.
+ */
+const SCALE = 2;
+
 const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: 1400, height: 1200 }, deviceScaleFactor: 1 });
+const page = await browser.newPage({
+  viewport: { width: 1400, height: 1200 },
+  deviceScaleFactor: SCALE,
+});
 await page.goto(SRC, { waitUntil: "networkidle" });
 // Webfonts decide the layout here — capturing before they land shifts every line.
 await page.evaluate(() => document.fonts.ready);
@@ -39,7 +52,7 @@ for (const [id, file] of FRAMES) {
   const el = page.locator(`#${id}`);
   await el.screenshot({ path: path.join(OUT, file), type: "jpeg", quality: 92 });
   const box = await el.boundingBox();
-  console.log(`✓ ${file}  ${Math.round(box.width)}×${Math.round(box.height)}`);
+  console.log(`✓ ${file}  ${Math.round(box.width * SCALE)}×${Math.round(box.height * SCALE)}`);
 }
 
 await browser.close();

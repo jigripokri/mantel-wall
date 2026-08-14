@@ -3,11 +3,15 @@
 Share images for Mantel, generated from the app's own screenshots so they can
 never drift from what the product actually looks like.
 
-| File | Size | Where it goes |
-| --- | --- | --- |
-| `linkedin-hero.jpg` | 1200×627 | LinkedIn / X link preview, blog headers |
-| `og-card.jpg` | 1280×640 | GitHub **Settings → Social preview**, `og:image` |
-| `carousel-1…5.jpg` | 1080×1080 | LinkedIn carousel or image post, Instagram |
+| File | Pixels | Layout size | Where it goes |
+| --- | --- | --- | --- |
+| `linkedin-hero.jpg` | 2400×1254 | 1200×627 | LinkedIn / X link preview, blog headers |
+| `og-card.jpg` | 2560×1280 | 1280×640 | GitHub **Settings → Social preview**, `og:image` |
+| `carousel-1…5.jpg` | 2160×2160 | 1080×1080 | LinkedIn carousel or image post, Instagram |
+
+Rendered at **2×**: the frames are laid out at the platform-native sizes and
+captured at twice the pixel density, which is what survives LinkedIn's
+re-encode. Upload them as-is — every platform downscales, none upscale.
 
 ## Regenerating
 
