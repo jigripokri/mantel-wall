@@ -166,7 +166,8 @@ silently.
 
 **MIT licensed.** Fork it, rename the family, hang it on your own wall.
 
-<sub>Screenshots are the real app on mock data. The photograph is synthetic —
-no family photo is committed to this repository, ever.</sub>
+<sub>Screenshots are the real app on mock data. The people in them are
+AI-generated and do not exist — no real family photo is committed to this
+repository, ever.</sub>
 
 </div>

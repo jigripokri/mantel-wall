@@ -25,13 +25,15 @@ The screenshots are embedded by relative path, so a new wall photo flows all the
 way through: generate a photo, re-run `shots.mjs`, re-run `social.mjs`, and the
 carousel updates itself.
 
-## Getting a better photo behind the wall
+## The photo behind the wall
 
-The shipped screenshots use a **generated** gradient landscape, not a
-photograph — no family photo is ever committed to this repository. For demo
-images with actual people in them, see
-[`docs/PHOTO-PROMPTS.md`](../PHOTO-PROMPTS.md): prompts engineered against the
-veil geometry, for a family that doesn't exist.
+The family in these assets is **AI-generated and does not exist**. No real
+family photo is ever committed to this repository, and the source images live in
+gitignored `dev-photos/` rather than in git.
+
+To swap in your own, see [`docs/PHOTO-PROMPTS.md`](../PHOTO-PROMPTS.md): prompts
+engineered against the veil geometry, since the wall's scrim covers the left
+third and a photo with its subject on the left is an invisible photo.
 
 ## Typography
 

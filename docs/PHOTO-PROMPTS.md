@@ -126,5 +126,7 @@ image can never reach a build. Real family photos belong in the Supabase Storage
 `photos` bucket, behind a signed URL. Anything committed is in git history
 permanently — that is not recoverable by deleting it later.
 
-The images in `docs/screenshots/` are generated, not photographed, for exactly
-this reason.
+The family in `docs/screenshots/` and `docs/social/` was generated from prompt 1
+below. Those people do not exist, which is exactly why those images are safe to
+commit and a real photo of your own would not be. The source files stay in
+gitignored `dev-photos/`; only the rendered screenshots are tracked.
