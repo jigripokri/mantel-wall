@@ -53,11 +53,16 @@ const SHOTS = [
     cross: true,
   },
   { file: "phone.png", photo: "garden.jpg", route: "/", w: 430, h: 846 },
-  // Same photo as the side veil, deliberately: this shot exists to show a
-  // different *layout*, and holding the image constant is what makes the
-  // difference legible. It also hangs the photo in a frame — a centre crop of
-  // 16:9 — so an image whose subject sits far right gets clipped by the mount.
-  { file: "wall-oat-moss.jpg", photo: "garden.jpg", w: 1600, h: 900, layout: "oat-moss", type: "jpeg" },
+  // The same wall on a different photo — what the rotation actually looks like,
+  // and proof the veil holds its contrast against a dark image as well as a
+  // bright one.
+  { file: "wall-side-veil-dusk.jpg", photo: "beach.jpg", w: 1600, h: 900, type: "jpeg" },
+  // Oat & moss hangs its photo in a frame — a CENTRE crop — while the veil
+  // photos are composed with their subject far right, so the mount clips the
+  // family out of its own picture. Verified against two different images: it is
+  // the crop, not the photo. So this one gets a pre-cropped, portrait-ish file
+  // whose subject already sits centre. Same scene, framed for the mount.
+  { file: "wall-oat-moss.jpg", photo: "kitchen-crop.jpg", w: 1600, h: 900, layout: "oat-moss", type: "jpeg" },
 ];
 
 let chromium;

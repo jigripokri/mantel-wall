@@ -50,15 +50,16 @@ way stars come down.
 <tr>
 <td width="62%">
 
-![The Oat & moss layout — a daylight family board with a hanging photo, tonight's events and chores](docs/screenshots/wall-oat-moss.jpg)
+![The Oat & moss layout — a daylight family board, a photo hung in a paper mount, tonight's events and chores](docs/screenshots/wall-oat-moss.jpg)
 
 **The wall** — `/tv`
 
-Three layouts ship. *Side veil* is one photo, dark, with a quiet column of type.
-*Oat & moss* is a daylight family board that goes walnut after dark. *The stack*
-hangs one photo forward with two peeking behind.
+A fixed 1920×1080 stage that scales to any screen, with type sized to be read
+across a room rather than from a desk chair.
 
-Switch between them from your phone. The wall repaints instantly.
+Three layouts ship. *Side veil* — above — is one photo, dark, with a quiet column
+of type. *Oat & moss* is a daylight family board that goes walnut after dark.
+*The stack* hangs one photo forward with two peeking behind.
 
 </td>
 <td width="38%">
@@ -67,13 +68,28 @@ Switch between them from your phone. The wall repaints instantly.
 
 **The phone** — `/`
 
-Tap a star. Upload a photo. Change the week's reward. Put the wall to sleep.
+Tap a star. Upload a photo. Change the week's reward. Switch the wall's layout.
+Put it to sleep for the day.
 
-Add it to your home screen and it's an app.
+Every change repaints the TV in about a second over Realtime. Add it to your
+home screen and it behaves like an app.
 
 </td>
 </tr>
 </table>
+
+---
+
+## Your photos, behind everything
+
+![The same wall at dusk — two children silhouetted on a beach at sunset, the column of type still fully legible over it](docs/screenshots/wall-side-veil-dusk.jpg)
+
+The same wall, a different evening. Photos uploaded from a phone rotate behind
+the type on a slow Ken Burns drift, and the veil is angled so it holds the
+column's contrast against a dark photo as readily as a bright one.
+
+They live in your own Supabase Storage bucket and are served through signed
+URLs — never public, never on anyone else's CDN.
 
 ---
 

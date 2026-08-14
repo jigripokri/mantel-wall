@@ -111,6 +111,15 @@
          whose burst is centred and would lose its right half otherwise. */
       .card .shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: left center; }
       .card .shot.mid img { object-position: center; }
+      /* Both screens, side by side — the slide's actual claim. The wall takes
+         whatever the phone leaves and crops from the left so its type column
+         survives; the phone keeps its own 430×846 proportions. */
+      .card .shot.pair { display: flex; gap: 22px; background: transparent; box-shadow: none; }
+      .card .shot.pair > * { border-radius: 3px; overflow: hidden;
+                             box-shadow: 0 26px 56px -16px hsl(26 14% 3% / 0.8), 0 0 0 1px hsl(36 20% 80% / 0.1); }
+      .card .shot.pair .w { flex: 1; min-width: 0; }
+      .card .shot.pair .p { flex: 0 0 auto; height: 100%; }
+      .card .shot.pair .p img { width: auto; height: 100%; object-fit: contain; }
       .pager { position: absolute; right: 76px; bottom: 62px; font-family: var(--text);
                font-size: 17px; font-weight: 500; color: var(--ink-faint); letter-spacing: .06em; }
 
@@ -191,7 +200,10 @@
         Tap a star, upload a photo, switch the layout, put the wall to sleep.
         Every change repaints the TV instantly over Realtime.
       </div>
-      <div class="shot"><img src="../screenshots/wall-oat-moss.jpg" alt="" /></div>
+      <div class="shot pair">
+        <div class="w"><img src="../screenshots/wall-side-veil-dusk.jpg" alt="" /></div>
+        <div class="p"><img src="../screenshots/phone.png" alt="" /></div>
+      </div>
       <div class="pager">3 / 5</div>
     </div>
 
