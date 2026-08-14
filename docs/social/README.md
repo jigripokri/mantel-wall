@@ -1,0 +1,40 @@
+# Social assets
+
+Share images for Mantel, generated from the app's own screenshots so they can
+never drift from what the product actually looks like.
+
+| File | Size | Where it goes |
+| --- | --- | --- |
+| `linkedin-hero.jpg` | 1200×627 | LinkedIn / X link preview, blog headers |
+| `og-card.jpg` | 1280×640 | GitHub **Settings → Social preview**, `og:image` |
+| `carousel-1…5.jpg` | 1080×1080 | LinkedIn carousel or image post, Instagram |
+
+## Regenerating
+
+```bash
+npm i -D playwright && npx playwright install chromium   # once; not a project dependency
+node scripts/shots.mjs      # app screenshots  → docs/screenshots/
+node scripts/social.mjs     # share images     → docs/social/
+```
+
+`templates.html` is the source. Every frame is a `.frame` element sized in CSS
+and captured by id, so changing a headline means editing HTML, not a design
+tool. Open it directly in a browser to iterate.
+
+The screenshots are embedded by relative path, so a new wall photo flows all the
+way through: generate a photo, re-run `shots.mjs`, re-run `social.mjs`, and the
+carousel updates itself.
+
+## Getting a better photo behind the wall
+
+The shipped screenshots use a **generated** gradient landscape, not a
+photograph — no family photo is ever committed to this repository. For demo
+images with actual people in them, see
+[`docs/PHOTO-PROMPTS.md`](../PHOTO-PROMPTS.md): prompts engineered against the
+veil geometry, for a family that doesn't exist.
+
+## Typography
+
+Newsreader for display, Instrument Sans for text — the same pairing the wall
+uses, loaded from Google Fonts. `document.fonts.ready` is awaited before capture;
+screenshotting before the webfonts land reflows every headline.

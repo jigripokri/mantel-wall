@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mantel — social asset templates</title>
+    <!-- Source for the images in docs/social/. Render with: node scripts/social.mjs
+         Each .frame is captured by id at its own exact pixel size. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Instrument+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: hsl(36 30% 94%);
+        --ink-soft: hsl(36 20% 84%);
+        --ink-dim: hsl(32 16% 76%);
+        --ink-faint: hsl(30 10% 58%);
+        --accent: hsl(30 48% 74%);
+        --gold: hsl(44 74% 56%);
+        --surface: hsl(26 12% 8%);
+        --plaster-a: hsl(28 14% 19%);
+        --plaster-b: hsl(26 12% 10%);
+        --display: "Newsreader", Georgia, serif;
+        --text: "Instrument Sans", system-ui, sans-serif;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { background: #111; font-family: var(--text); }
+
+      .frame {
+        position: relative;
+        overflow: hidden;
+        background: var(--surface);
+        color: var(--ink);
+        margin: 28px;
+      }
+      .eyebrow {
+        font-family: var(--text);
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .lede { font-family: var(--display); font-weight: 400; line-height: 1.14; color: var(--ink); }
+      .sub { font-family: var(--text); font-weight: 400; color: var(--ink-dim); }
+      .foot { font-family: var(--text); font-weight: 500; color: var(--ink-faint); }
+
+      /* A wall in a room: warm plaster, light falling from the upper left,
+         a floor line low in the frame. Sells the TV as an object, not a UI. */
+      .room {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(120% 90% at 22% 8%, hsl(30 16% 24%) 0%, transparent 62%),
+          linear-gradient(168deg, var(--plaster-a) 0%, var(--plaster-b) 78%);
+      }
+      .room::after { /* vignette */
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(130% 100% at 50% 42%, transparent 42%, hsl(26 12% 4% / 0.72) 100%);
+      }
+      .floorline {
+        position: absolute;
+        left: 0; right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, hsl(36 20% 80% / 0.14) 30%, hsl(36 20% 80% / 0.05) 100%);
+      }
+
+      /* The set: a thin near-black bezel, a hairline inner edge, and a shadow
+         that reads as the panel standing off the wall. */
+      .tv { position: absolute; padding: 9px; background: hsl(24 8% 6%); border-radius: 3px;
+            box-shadow: 0 2px 0 hsl(36 20% 80% / 0.06) inset, 0 38px 70px -18px hsl(26 14% 3% / 0.86),
+                        0 8px 22px hsl(26 14% 3% / 0.5); }
+      .tv img { display: block; width: 100%; height: 100%; object-fit: cover;
+                box-shadow: 0 0 0 1px hsl(36 20% 80% / 0.09); }
+
+      .rule { height: 1px; background: hsl(36 20% 80% / 0.16); }
+      .dot { display: inline-block; width: .42em; height: .42em; border-radius: 50%; vertical-align: middle; }
+
+      /* ---------------- LinkedIn hero, 1200×627 ---------------- */
+      #linkedin-hero { width: 1200px; height: 627px; }
+      #linkedin-hero .floorline { bottom: 74px; }
+      #linkedin-hero .copy { position: absolute; left: 68px; top: 96px; width: 420px; }
+      #linkedin-hero .eyebrow { font-size: 15px; letter-spacing: .34em; }
+      #linkedin-hero .lede { font-size: 47px; margin-top: 20px; }
+      #linkedin-hero .sub { font-size: 18px; line-height: 1.55; margin-top: 22px; }
+      #linkedin-hero .foot { position: absolute; left: 68px; bottom: 54px; font-size: 15px; letter-spacing: .02em; }
+      #linkedin-hero .tv { right: 60px; top: 112px; width: 592px; height: 333px; }
+
+      /* ---------------- GitHub social preview, 1280×640 ---------------- */
+      #og { width: 1280px; height: 640px; }
+      #og .floorline { bottom: 58px; }
+      #og .tv { left: 50%; transform: translateX(-50%); top: 172px; width: 760px; height: 428px; }
+      #og .head { position: absolute; top: 56px; left: 0; right: 0; text-align: center; }
+      #og .eyebrow { font-size: 16px; letter-spacing: .42em; }
+      #og .lede { font-size: 44px; margin-top: 14px; }
+
+      /* ---------------- Carousel, 1080×1080 ---------------- */
+      .card { width: 1080px; height: 1080px; padding: 76px; display: flex; flex-direction: column; }
+      .card .eyebrow { font-size: 17px; letter-spacing: .36em; }
+      .card .lede { font-size: 62px; margin-top: 22px; }
+      .card .sub { font-size: 25px; line-height: 1.5; margin-top: 26px; }
+      /* Fixed height, cover-cropped: the 16:9 wall shots leave a dead band in a
+         square card otherwise, and the crop costs nothing here — the column of
+         type is on the left of the wall and the burst is centred. */
+      .card .shot { margin-top: auto; height: 596px; border-radius: 3px; overflow: hidden;
+                    box-shadow: 0 26px 56px -16px hsl(26 14% 3% / 0.8), 0 0 0 1px hsl(36 20% 80% / 0.1); }
+      /* Anchor left: the wall's type column lives on the left edge, so a centre
+         crop decapitates it. `.mid` opts back into centre for the celebration,
+         whose burst is centred and would lose its right half otherwise. */
+      .card .shot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+      .card .shot.mid img { object-position: center; }
+      .pager { position: absolute; right: 76px; bottom: 62px; font-family: var(--text);
+               font-size: 17px; font-weight: 500; color: var(--ink-faint); letter-spacing: .06em; }
+
+      /* Slide 4 — the config file, as the app's own type would set it. */
+      /* auto on both sides: centres the block in the space the copy leaves,
+         rather than dropping it to the floor with a dead band above. */
+      .code { margin: auto 0; background: hsl(26 12% 6%); border: 1px solid hsl(36 20% 80% / 0.12);
+              border-radius: 6px; padding: 52px 44px; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+              font-size: 26px; line-height: 1.95; color: var(--ink-soft); }
+      .code .k { color: var(--accent); }
+      .code .s { color: var(--gold); }
+      .code .c { color: hsl(30 10% 46%); }
+
+      /* Slide 5 — the close. */
+      #c5 { align-items: center; justify-content: center; text-align: center; }
+      #c5 .lede { font-size: 78px; margin-top: 34px; }
+      #c5 .url { font-family: var(--text); font-size: 27px; font-weight: 500; color: var(--accent);
+                 margin-top: 46px; letter-spacing: .01em; }
+      #c5 .sub { max-width: 720px; }
+      #c5 .stars { font-size: 46px; letter-spacing: .34em; color: var(--gold); }
+    </style>
+  </head>
+  <body>
+    <!-- ============ LinkedIn hero 1200×627 ============ -->
+    <div class="frame" id="linkedin-hero">
+      <div class="room"></div>
+      <div class="floorline"></div>
+      <div class="copy">
+        <div class="eyebrow">Mantel</div>
+        <div class="lede">Your family's week, hanging on the wall like it belongs there.</div>
+        <div class="sub">
+          An open-source family portal for a TV on the wall. Calendar, chores and
+          photos — rendered as decor, not a dashboard.
+        </div>
+      </div>
+      <div class="foot">Open source · MIT · github.com/jigripokri/mantel-wall</div>
+      <div class="tv"><img src="../screenshots/wall-side-veil.jpg" alt="" /></div>
+    </div>
+
+    <!-- ============ GitHub social preview 1280×640 ============ -->
+    <div class="frame" id="og">
+      <div class="room"></div>
+      <div class="floorline"></div>
+      <div class="head">
+        <div class="eyebrow">Mantel</div>
+        <div class="lede">The family calendar, as framed decor.</div>
+      </div>
+      <div class="tv"><img src="../screenshots/wall-side-veil.jpg" alt="" /></div>
+    </div>
+
+    <!-- ============ Carousel ============ -->
+    <div class="frame card" id="c1">
+      <div class="eyebrow">Mantel</div>
+      <div class="lede">Not another<br />dashboard.</div>
+      <div class="sub">
+        A wall-mounted family portal that shows today and gets out of the way.
+        Open source, runs on a Raspberry Pi and a free tier.
+      </div>
+      <div class="shot"><img src="../screenshots/wall-side-veil.jpg" alt="" /></div>
+      <div class="pager">1 / 5</div>
+    </div>
+
+    <div class="frame card" id="c2">
+      <div class="eyebrow">The tenth star</div>
+      <div class="lede">Fill the row and the whole wall stops.</div>
+      <div class="sub">
+        A parent taps a star from the couch and says why. Nine seconds of
+        celebration, once a week, across all 1920×1080.
+      </div>
+      <div class="shot mid"><img src="../screenshots/wall-celebration.jpg" alt="" /></div>
+      <div class="pager">2 / 5</div>
+    </div>
+
+    <div class="frame card" id="c3">
+      <div class="eyebrow">Two screens</div>
+      <div class="lede">The wall listens.<br />The phone talks.</div>
+      <div class="sub">
+        Tap a star, upload a photo, switch the layout, put the wall to sleep.
+        Every change repaints the TV instantly over Realtime.
+      </div>
+      <div class="shot"><img src="../screenshots/wall-oat-moss.jpg" alt="" /></div>
+      <div class="pager">3 / 5</div>
+    </div>
+
+    <div class="frame card" id="c4">
+      <div class="eyebrow">Make it yours</div>
+      <div class="lede">Every name lives in one file.</div>
+      <div class="sub">
+        Fork it, edit one config, and it's your family on the wall. Sign-in emails
+        deliberately live in the database, never in the bundle.
+      </div>
+      <div class="code">
+        <span class="c">// src/config/family.ts</span><br />
+        <span class="k">people</span>: [<br />
+        &nbsp;&nbsp;{ id: <span class="s">"person-1"</span>, name: <span class="s">"Alex"</span> },<br />
+        &nbsp;&nbsp;{ id: <span class="s">"person-2"</span>, name: <span class="s">"Sam"</span> },<br />
+        ],<br />
+        <span class="k">starBank</span>: { childName: <span class="s">"Robin"</span>, goal: 10 },
+      </div>
+      <div class="pager">4 / 5</div>
+    </div>
+
+    <div class="frame card" id="c5">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <div class="lede">MIT.<br />Fork it.</div>
+      <div class="sub">
+        No accounts needed to try it — it ships with mock data and runs on your
+        laptop in three commands.
+      </div>
+      <div class="url">github.com/jigripokri/mantel-wall</div>
+    </div>
+  </body>
+</html>

@@ -155,6 +155,10 @@ silently.
 - [`CLAUDE.md`](CLAUDE.md) — how to work in this repo, for humans and agents.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — issues and PRs welcome.
 - [`tasks/`](tasks/) — self-contained feature specs, and a template for your own.
+- [`docs/PHOTO-PROMPTS.md`](docs/PHOTO-PROMPTS.md) — prompts for generating demo photos
+  that survive the veil. The wall is a photograph with a dark scrim over its left
+  third, which constrains a good image more than taste does.
+- [`docs/social/`](docs/social/) — share images, regenerated from the real app.
 
 ---
 
