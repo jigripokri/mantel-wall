@@ -5,6 +5,7 @@ import {
   greeting,
   isSameDay,
   fmtTime,
+  fmtClock,
   fmtDayLabel,
   fmtPastDayLabel,
   homeDayNumber,
@@ -101,3 +102,37 @@ describe("wall time is pinned to the home zone", () => {
     expect(fmtDayLabel(before, after)).toBe("Tomorrow");
   });
 });
+
+describe("the wall clock", () => {
+  // The clock was the last thing on the wall still read from the HOST zone
+  // while the greeting, date line and every event time used HOME_TZ. On a Pi
+  // flashed without raspi-config that put "GOOD MORNING" over an afternoon
+  // clock. These run under both TZ=UTC and TZ=America/Los_Angeles, so a
+  // regression fails in exactly one of the two runs.
+  const evening = new Date("2026-08-14T01:12:00Z"); // 6:12 PM in Los Angeles
+
+  it("reads in the home zone, whatever zone the host is in", () => {
+    const { clock } = fmtClock(evening);
+    const expected = evening.toLocaleTimeString([], {
+      hour: "numeric",
+      minute: "2-digit",
+      timeZone: HOME_TZ,
+    });
+    expect(expected.startsWith(clock)).toBe(true);
+    expect(clock).not.toBe("1:12"); // the UTC reading, i.e. the bug
+  });
+
+  it("agrees with the greeting beside it", () => {
+    // The two are rendered inches apart; disagreeing is the visible symptom.
+    expect(greeting(evening)).toBe("Good evening");
+    expect(dayPart(evening)).toBe("evening");
+  });
+
+  it("hands back the meridiem split off, and tolerates not having one", () => {
+    const { clock, meridiem } = fmtClock(evening);
+    expect(clock).not.toContain(" ");
+    // Empty on a 24-hour locale — the layouts render it conditionally.
+    if (meridiem) expect(["AM", "PM"]).toContain(meridiem);
+  });
+});
+

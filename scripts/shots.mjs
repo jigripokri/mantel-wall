@@ -15,10 +15,11 @@
  * restarted once per group. A missing photo is not fatal: the wall falls back to
  * its solid no-photo rendering, which is a real supported state.
  *
- * The browser clock and timezone are both pinned. That is load-bearing, not
- * tidiness: the wall clock is formatted from the host zone while the greeting
- * and date line use HOME_TZ, so an unpinned run can produce a screenshot
- * reading "GOOD MORNING" above an afternoon clock.
+ * The browser clock and timezone are pinned so the output is reproducible —
+ * same commit, same pixels. (It used to be load-bearing for correctness too:
+ * the wall clock was formatted from the host zone while everything beside it
+ * used HOME_TZ, so an unpinned run could render "GOOD MORNING" above an
+ * afternoon clock. `fmtClock` fixed that; the pin now only buys determinism.)
  */
 import { spawn } from "node:child_process";
 import { mkdir, access } from "node:fs/promises";

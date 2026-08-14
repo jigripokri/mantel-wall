@@ -1,4 +1,4 @@
-import { greeting, dayPart, countdownLabel } from "../../lib/time";
+import { greeting, dayPart, countdownLabel, fmtClock } from "../../lib/time";
 import { agendaHeading } from "../../lib/agenda";
 import { eventMeta } from "../../lib/format";
 import { isDarkSkin } from "../../lib/tvTheme";
@@ -135,8 +135,7 @@ function Board({
   const t = isDark ? EVENING : DAY;
   const w = weather?.payload as { tempF?: number; code?: number; hiF?: number; loF?: number } | undefined;
 
-  const time = now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-  const [clock, meridiem] = time.split(" ");
+  const { clock, meridiem } = fmtClock(now);
 
   // Evening keeps the board's own "Tonight & tomorrow" (already an honest mixed
   // label); the day heading tells the truth about what's under it.

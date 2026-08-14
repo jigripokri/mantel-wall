@@ -36,6 +36,27 @@ export function isSameDay(a: Date, b: Date): boolean {
   return dayNumberIn(a, HOME_TZ) === dayNumberIn(b, HOME_TZ);
 }
 
+/**
+ * The big wall clock, in the home zone.
+ *
+ * This was the one thing on the wall still formatted from the *host* zone,
+ * which put it hours out of step with the greeting, the date line and every
+ * event time beside it — the exact failure the module header warns about, on
+ * the exact machine it describes. A Pi flashed without `raspi-config` showed
+ * "GOOD MORNING" over an afternoon clock.
+ *
+ * Locale stays the host's: a household on a 24-hour locale should get a
+ * 24-hour wall. Only the zone is pinned. Both layouts render the meridiem
+ * smaller than the digits, so this hands back the two pieces already split —
+ * and `meridiem` is legitimately empty on a 24-hour locale.
+ */
+export function fmtClock(now: Date): { clock: string; meridiem: string } {
+  const [clock, meridiem = ""] = now
+    .toLocaleTimeString([], { hour: "numeric", minute: "2-digit", timeZone: HOME_TZ })
+    .split(" ");
+  return { clock, meridiem };
+}
+
 export function fmtTime(iso: string | null): string {
   if (!iso) return "";
   return new Date(iso).toLocaleTimeString([], {

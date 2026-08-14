@@ -1,4 +1,4 @@
-import { greeting, countdownLabel } from "../../lib/time";
+import { greeting, countdownLabel, fmtClock } from "../../lib/time";
 import { formatWeather, eventMeta } from "../../lib/format";
 import { StalenessNotice } from "./shared";
 import { StarBankView, COLUMN_SCALE } from "./StarBank";
@@ -195,8 +195,7 @@ export function SideVeil({
 type Ink = { base: string; soft: string; dim: string; faint: string; accent: string };
 
 function ClockLine({ now, ink }: { now: Date; ink: Ink }) {
-  const time = now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-  const [clock, meridiem] = time.split(" ");
+  const { clock, meridiem } = fmtClock(now);
   return (
     <div className="mt-4 flex items-baseline gap-4">
       <span
