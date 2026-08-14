@@ -12,6 +12,11 @@ These prompts are engineered against the real geometry. Paste them into Gemini
 > prompt for a real, named, or identifiable person, and never put an actual
 > family photo in this repository — see the note at the bottom.
 
+The prompts describe different households on purpose. This is a template other
+families fork; a set that only ever pictures one kind of family is a poor
+default. Rewrite the people in any of them — the composition rules below are the
+part that has to survive.
+
 ---
 
 ## The constraint, in one picture
@@ -93,6 +98,34 @@ So every prompt below asks for:
 > backlight through amber and rust foliage, sun flare low on the right. 70mm,
 > f/2.8, shallow depth. Palette of ochre, rust, moss, deep brown. Filmic, soft
 > contrast. No text or logos. 16:9, 1920×1080.
+
+## 6. Golden hour, garden — a North Indian family
+
+Same composition as #1, different household. Swap in whoever's wall this is —
+the geometry is what matters, not the family. The marigold-and-terracotta
+palette here sits closer to the app's own tokens than #1 does.
+
+> Candid documentary photograph of a young North Indian family in a garden at
+> golden hour, late summer. A mother in a soft cotton kurta lifts a laughing
+> three-year-old overhead; an older brother in a t-shirt and shorts watches from
+> beside them, grinning. **The group is positioned in the right third of the
+> frame**, faces about 75% of the way across. The left third is open, softly
+> shaded lawn with a bougainvillea hedge falling into shadow — quiet,
+> uncluttered, no bright highlights. Warm low sun from behind the subjects,
+> gentle rim light on dark hair, soft amber haze, dust in the air. Marigold beds
+> and terracotta pots along the right edge, a low plastered boundary wall, a neem
+> tree behind. Warm brown skin tones rendered naturally and accurately. Shot on
+> 85mm at f/2, shallow depth of field, subtle film grain. Muted warm palette:
+> ambers, marigold orange, terracotta, deep green. No text, no logos, no
+> watermark. 16:9, 1920×1080.
+
+For a rooftop terrace instead — common in North Indian homes, and a good look
+— replace the setting clause with: *"on an open rooftop terrace at golden hour,
+potted plants and a low parapet wall along the right, city rooftops soft and
+hazy behind, laundry line out of focus on the left in shadow."*
+
+If a result drifts festive, add *"ordinary weekday clothing, not festive or
+wedding attire"* — the prompt asks for everyday cotton on purpose.
 
 ---
 
