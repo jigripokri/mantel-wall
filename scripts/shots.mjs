@@ -10,10 +10,16 @@
  *   npm i -D playwright && npx playwright install chromium
  *
  * Photos come from `dev-photos/` (gitignored — see docs/PHOTO-PROMPTS.md for how
- * to generate some). Each shot names the photo it wants; the dev server bakes
- * VITE_DEV_PHOTO_URL in at boot, so shots are grouped by photo and the server is
- * restarted once per group. A missing photo is not fatal: the wall falls back to
- * its solid no-photo rendering, which is a real supported state.
+ * to generate some). Each shot names the photo(s) it wants; the dev server bakes
+ * VITE_DEV_PHOTO_URL in at boot, so shots are grouped by photo set and the server
+ * is restarted once per group. A missing photo is not fatal: the wall falls back
+ * to its solid no-photo rendering, which is a real supported state.
+ *
+ * A shot may name SEVERAL photos. Side veil uses only the first (it is a
+ * full-bleed background), but Oat & moss leans up to three as a mantelpiece, and
+ * with fewer than three the empty slots simply don't render — so shooting that
+ * board with one photo silently misrepresents it. First listed is the hero
+ * frame, and `url|caption` captions it.
  *
  * The browser clock and timezone are pinned so the output is reproducible —
  * same commit, same pixels. (It used to be load-bearing for correctness too:
@@ -39,30 +45,39 @@ const WHEN = new Date("2026-08-13T18:12:00-07:00"); // a summer evening
 const SHOTS = [
   // The wall, 16:9. The stage is fixed at 1920×1080 and scales to fit, so 1600
   // wide is the same composition at a third of the file size.
-  { file: "wall-side-veil.jpg", photo: "garden.jpg", w: 1600, h: 900, type: "jpeg" },
+  { file: "wall-side-veil.jpg", photos: ["garden.jpg"], w: 1600, h: 900, type: "jpeg" },
   {
     // The tenth star. Boot one short of the goal, then cross it live — the burst
     // deliberately does NOT fire on a wall that merely booted into a full row,
     // so the threshold has to be crossed while the page is watching.
     file: "wall-celebration.jpg",
-    photo: "garden.jpg",
+    photos: ["garden.jpg"],
     w: 1600,
     h: 900,
     stars: 9,
     type: "jpeg",
     cross: true,
   },
-  { file: "phone.png", photo: "garden.jpg", route: "/", w: 430, h: 846 },
+  { file: "phone.png", photos: ["garden.jpg"], route: "/", w: 430, h: 846 },
   // The same wall on a different photo — what the rotation actually looks like,
   // and proof the veil holds its contrast against a dark image as well as a
   // bright one.
-  { file: "wall-side-veil-dusk.jpg", photo: "beach.jpg", w: 1600, h: 900, type: "jpeg" },
+  { file: "wall-side-veil-dusk.jpg", photos: ["beach.jpg"], w: 1600, h: 900, type: "jpeg" },
   // Oat & moss hangs its photo in a frame — a CENTRE crop — while the veil
   // photos are composed with their subject far right, so the mount clips the
   // family out of its own picture. Verified against two different images: it is
   // the crop, not the photo. So this one gets a pre-cropped, portrait-ish file
   // whose subject already sits centre. Same scene, framed for the mount.
-  { file: "wall-oat-moss.jpg", photo: "kitchen-crop.jpg", w: 1600, h: 900, layout: "oat-moss", type: "jpeg" },
+  // All three, because the mantelpiece is a trio — one photo renders one lonely
+  // print and reads as a bug. Hero first, and it is the only frame captioned.
+  {
+    file: "wall-oat-moss.jpg",
+    photos: ["kitchen-crop.jpg|Pancake Saturday", "garden-crop.jpg", "beach-crop.jpg"],
+    w: 1600,
+    h: 900,
+    layout: "oat-moss",
+    type: "jpeg",
+  },
 ];
 
 let chromium;
@@ -117,11 +132,18 @@ const stopVite = async (proc) => {
   throw new Error(`Dev server on :${PORT} would not shut down`);
 };
 
-const startVite = async (photo) => {
+const startVite = async (photos) => {
   if (await listening()) throw new Error(`Something is already on :${PORT}`);
+  // Each item may carry a `|caption`, which must stay attached to its url.
+  const value = (photos ?? [])
+    .map((item) => {
+      const [file, caption] = item.split("|");
+      return caption ? `/dev-photos/${file}|${caption}` : `/dev-photos/${file}`;
+    })
+    .join(",");
   const proc = spawn("npx", ["vite", "--port", String(PORT), "--strictPort"], {
     cwd: ROOT,
-    env: { ...process.env, VITE_DEV_PHOTO_URL: photo ? `/dev-photos/${photo}` : "" },
+    env: { ...process.env, VITE_DEV_PHOTO_URL: value },
     stdio: "ignore",
     shell: win,
     detached: !win,
@@ -137,23 +159,28 @@ const startVite = async (photo) => {
 
 await mkdir(OUT, { recursive: true });
 
-// Group by photo so the dev server restarts once per photo, not once per shot.
+// Group by photo SET so the dev server restarts once per set, not once per shot.
 const groups = new Map();
 for (const s of SHOTS) {
-  if (!groups.has(s.photo)) groups.set(s.photo, []);
-  groups.get(s.photo).push(s);
+  const key = (s.photos ?? []).join(",");
+  if (!groups.has(key)) groups.set(key, []);
+  groups.get(key).push(s);
 }
 
 const browser = await chromium.launch();
 
-for (const [photo, shots] of groups) {
-  let use = photo;
-  if (photo) {
+for (const [key, shots] of groups) {
+  // Drop any missing file rather than failing: a fork with no photos still gets
+  // a full set of screenshots, just on the solid wall.
+  const wanted = key ? key.split(",") : [];
+  const use = [];
+  for (const item of wanted) {
+    const [file] = item.split("|");
     try {
-      await access(path.join(ROOT, "dev-photos", photo));
+      await access(path.join(ROOT, "dev-photos", file));
+      use.push(item);
     } catch {
-      console.warn(`! dev-photos/${photo} not found — falling back to the solid wall`);
-      use = null;
+      console.warn(`! dev-photos/${file} not found — skipping it`);
     }
   }
 
@@ -186,7 +213,7 @@ for (const [photo, shots] of groups) {
       path: path.join(OUT, s.file),
       ...(s.type === "jpeg" ? { type: "jpeg", quality: 92 } : {}),
     });
-    console.log(`✓ ${s.file}${use ? `  (${use})` : "  (no photo)"}`);
+    console.log(`✓ ${s.file}${use.length ? `  (${use.map((u) => u.split("|")[0]).join(", ")})` : "  (no photo)"}`);
     await ctx.close();
   }
   await stopVite(vite);

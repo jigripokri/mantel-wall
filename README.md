@@ -50,7 +50,7 @@ way stars come down.
 <tr>
 <td width="62%">
 
-![The Oat & moss layout — a daylight family board, a photo hung in a paper mount, tonight's events and chores](docs/screenshots/wall-oat-moss.jpg)
+![The Oat & moss layout — three photo prints leaning on a shelf like a mantelpiece, beside tonight's events and chores](docs/screenshots/wall-oat-moss.jpg)
 
 **The wall** — `/tv`
 
@@ -58,8 +58,11 @@ A fixed 1920×1080 stage that scales to any screen, with type sized to be read
 across a room rather than from a desk chair.
 
 Three layouts ship. *Side veil* — above — is one photo, dark, with a quiet column
-of type. *Oat & moss* is a daylight family board that goes walnut after dark.
-*The stack* hangs one photo forward with two peeking behind.
+of type. *Oat & moss* leans three prints on a shelf like a mantelpiece and goes
+walnut after dark. *The stack* hangs one photo forward with two peeking behind.
+
+Only the newest print is captioned, and one frame changes about once an hour —
+décor, not a slideshow.
 
 </td>
 <td width="38%">
